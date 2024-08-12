@@ -654,45 +654,51 @@ public class WilliamMartinez_proyecto1_Q3 {
             }
             
             else if(eleccion==5){
-                System.out.println("Desea realizar el cierre de caja? 1(si), 2(no)");
-                int opcionCaja=lea.nextInt();
-                
-                if (opcionCaja==1){
-                    System.out.println("Dinero en caja: Lps. "+ caja+"\n"
-                    + "Para finalizar el cierre de caja ingrese la cantidad de dinero que desea depositar en el banco.\n"
-                    + "(Un maximo del 60% se puede depositar en el banco): Lps. ");
-                    int deposito=lea.nextInt();
-                    
-                    while(deposito>0.6*caja || deposito<0){
-                    System.out.println("Error. Ingreso una cantidad mayor al 60% o ingreso cantidades negativas.\n"
-                    + "Ingrese la cantidad que desea depositar: Lps. ");
-                    deposito=lea.nextInt();
-                    }
-                    
-                    productoEstrella="";
-                    firstPlace="";
-                    secondPlace="";
-                    thirdPlace="";
-                    fourthPlace="";
-                    kgVendidoAzucar=0;
-                    kgVendidoAvena=0;
-                    kgVendidoTrigo=0;
-                    kgVendidoMaiz=0;
-                    productoEstrella="";
-                    mayorCompra=0;
-                    mayorVenta=0;
-                    volumenVenta=0;
-                    volumenCompra=0;
-                    contadorCompra=0;
-                    contadorVenta=0;
-                    caja-=deposito;
-                    cajaOpen=false;
-                    contadorCaja=1;
-                    
+                if(cajaOpen==false){
+                    System.out.println("La caja ya esta cerrada. Abrir caja antes.");
                 }
                 
-                else if (opcionCaja==2){
-                    System.out.println("Cierre de caja cancelado.");
+                else if(cajaOpen==true){
+                    System.out.println("Desea realizar el cierre de caja? 1(si), 2(no)");
+                    int opcionCaja=lea.nextInt();
+
+                    if (opcionCaja==1){
+                        System.out.println("Dinero en caja: Lps. "+ caja+"\n"
+                        + "Para finalizar el cierre de caja ingrese la cantidad de dinero que desea depositar en el banco.\n"
+                        + "(Un maximo del 60% se puede depositar en el banco): Lps. ");
+                        int deposito=lea.nextInt();
+
+                        while(deposito>0.6*caja || deposito<0){
+                        System.out.println("Error. Ingreso una cantidad mayor al 60% o ingreso cantidades negativas.\n"
+                        + "Ingrese la cantidad que desea depositar: Lps. ");
+                        deposito=lea.nextInt();
+                        }
+
+                        productoEstrella="";
+                        firstPlace="";
+                        secondPlace="";
+                        thirdPlace="";
+                        fourthPlace="";
+                        kgVendidoAzucar=0;
+                        kgVendidoAvena=0;
+                        kgVendidoTrigo=0;
+                        kgVendidoMaiz=0;
+                        productoEstrella="";
+                        mayorCompra=0;
+                        mayorVenta=0;
+                        volumenVenta=0;
+                        volumenCompra=0;
+                        contadorCompra=0;
+                        contadorVenta=0;
+                        caja-=deposito;
+                        cajaOpen=false;
+                        contadorCaja=1;
+
+                    }
+
+                    else if (opcionCaja==2){
+                        System.out.println("Cierre de caja cancelado.");
+                    }
                 }
             }
         }
