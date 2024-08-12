@@ -384,7 +384,7 @@ public class WilliamMartinez_proyecto1_Q3 {
                     }
                     double faltante=totalComp-caja;
                     if(totalComp>caja){
-                        System.out.println("Compra denegada, No tiene suficiente dinero en caja. (Lps. "+faltante+")");
+                        System.out.println("Compra denegada, No tiene suficiente dinero en caja. (Lps. "+faltante+" faltantes)");
                         break;
                     }
                     
