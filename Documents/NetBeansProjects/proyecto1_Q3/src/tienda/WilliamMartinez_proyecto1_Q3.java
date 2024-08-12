@@ -8,7 +8,7 @@ public class WilliamMartinez_proyecto1_Q3 {
         Scanner lea = new Scanner(System.in);
         lea.useDelimiter("\n");
 
-        boolean bucle = true, cajaOpen= true;
+        boolean bucle = true, cajaOpen= false;
         int caja = 0, codigoProducto=0, eleccionComp = 0, contadorCaja=0, contadorVenta=0, contadorCompra=0;
         String tipoCliente="", tipoProducto="", listProducts="", descuentoStr="", productoEstrella="";
         double kiloOpcion=0, contadorAzucar = 0, contadorAvena = 0, contadorTrigo = 0, contadorMaiz = 0, mayorVenta=0, mayorCompra=0;
@@ -19,7 +19,10 @@ public class WilliamMartinez_proyecto1_Q3 {
 
         while (bucle) {
             if(cajaOpen==false){
-                System.out.println("Estado de la caja:  cerrada.");
+                System.out.println("Estado de la caja:  Cerrada");
+            }
+            if(cajaOpen==true){
+                System.out.println("Estado de caja: Abierto");
             }
             System.out.println("----------MENU----------"
                     + "\n1- Abrir caja"
