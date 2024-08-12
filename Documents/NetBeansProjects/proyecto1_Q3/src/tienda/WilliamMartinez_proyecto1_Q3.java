@@ -668,6 +668,8 @@ public class WilliamMartinez_proyecto1_Q3 {
                     + "Ingrese la cantidad que desea depositar: Lps. ");
                     deposito=lea.nextInt();
                     }
+                    
+                    productoEstrella="";
                     firstPlace="";
                     secondPlace="";
                     thirdPlace="";
