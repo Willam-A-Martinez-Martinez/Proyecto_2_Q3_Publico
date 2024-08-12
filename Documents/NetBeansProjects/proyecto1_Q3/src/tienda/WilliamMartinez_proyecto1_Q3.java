@@ -668,9 +668,25 @@ public class WilliamMartinez_proyecto1_Q3 {
                     + "Ingrese la cantidad que desea depositar: Lps. ");
                     deposito=lea.nextInt();
                     }
+                    firstPlace="";
+                    secondPlace="";
+                    thirdPlace="";
+                    fourthPlace="";
+                    kgVendidoAzucar=0;
+                    kgVendidoAvena=0;
+                    kgVendidoTrigo=0;
+                    kgVendidoMaiz=0;
+                    productoEstrella="";
+                    mayorCompra=0;
+                    mayorVenta=0;
+                    volumenVenta=0;
+                    volumenCompra=0;
+                    contadorCompra=0;
+                    contadorVenta=0;
                     caja-=deposito;
                     cajaOpen=false;
                     contadorCaja=1;
+                    
                 }
                 
                 else if (opcionCaja==2){
