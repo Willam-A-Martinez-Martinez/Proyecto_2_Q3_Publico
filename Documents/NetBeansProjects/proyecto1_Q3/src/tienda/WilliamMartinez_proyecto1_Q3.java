@@ -129,11 +129,11 @@ public class WilliamMartinez_proyecto1_Q3 {
                                     codigoProducto=lea.nextInt();
                                 }
                             }
-                            if(codigoProducto==1){
+                        if(codigoProducto==1){
                                 System.out.println("____________________________________________________________________________________\n" +
                                     "|____CODIGO____|__________PRODUCTO__________|________PRECIO________|___KILOGRAMOS___|\n" +
                                     "|_______1______|___________Azcuar____________|_______LPS. 30_______|_____"+contadorAzucar+"________|");
-                            }
+                        }
                         
                         else if(codigoProducto==2){
                             System.out.println("____________________________________________________________________________________\n" +
@@ -382,8 +382,9 @@ public class WilliamMartinez_proyecto1_Q3 {
                         totalComp=18*kiloOpcion;
                         costoComp=18;
                     }
+                    double faltante=totalComp-caja;
                     if(totalComp>caja){
-                        System.out.println("Compra denegada, No tiene suficiente dinero en caja.");
+                        System.out.println("Compra denegada, No tiene suficiente dinero en caja. (Lps. "+faltante+")");
                         break;
                     }
                     
