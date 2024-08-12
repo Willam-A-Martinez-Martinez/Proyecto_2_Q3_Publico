@@ -181,7 +181,6 @@ public class WilliamMartinez_proyecto1_Q3 {
                                 contadorAzucar-=kiloOpcion;
                                 totalPreV=30*kiloOpcion;
                                 costoV=30;
-                                System.out.println("Siempre entra?");
                                 
                             }
                             else if(codigoProducto==2 && (tipoCliente.equalsIgnoreCase("a") || tipoCliente.equalsIgnoreCase("b")) && contadorAvena>=kiloOpcion){
@@ -217,9 +216,6 @@ public class WilliamMartinez_proyecto1_Q3 {
                             }
                             subtotal+=totalPreV;
                             impuestos=subtotal*0.07;
-                            System.out.println(kiloOpcion);
-                            
-                            System.out.println(subtotal);
                             
                             //descuento
                             if(subtotal<1000){
