@@ -17,11 +17,11 @@ public class Manejo_user {
         return null;
     }
     
-    public boolean agregarUsuario(String username, String nombreUser, String password, char generoUser, int edadUser){
+    public boolean agregarUsuario(String username, String nombreUser, String password, char generoUser, int edadUser, boolean active){
         if (buscar(username)==null){
             for (int i=0; i<userInfo.length;i++){
                 if(userInfo[i]==null){
-                    userInfo[i]= new User_info(username, nombreUser, password, generoUser, edadUser);
+                    userInfo[i]= new User_info(username, nombreUser, password, generoUser, edadUser, active);
                     return true;
                 }
             }

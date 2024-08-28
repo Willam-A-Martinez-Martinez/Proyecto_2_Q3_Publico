@@ -128,12 +128,13 @@ public class Pagina_Inicial extends javax.swing.JFrame {
 
     private void botonInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInicioSesionActionPerformed
         
-
+        Pagina_Multiple pgMultiple = new Pagina_Multiple(this);
         String texto= bloqueUsuarioTxt.getText();
         User_info user =manejoUser.buscar(texto);
         System.out.println(user);
         if(user!=null){
-            //aqui va la pagina principal pero no esta hecho aun
+            pgMultiple.setVisible(true);
+            this.setVisible(false);
         }
         else{
             JOptionPane.showMessageDialog(rootPane, "Ingrese un usuario registrado de lo contrario registrarse.");

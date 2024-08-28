@@ -20,12 +20,13 @@ public class User_info {
     private int edadUser;
     private boolean active;
 
-    public User_info(String nombreUser, String username, String password, char generoUser, int edadUser) {
+    public User_info(String nombreUser, String username, String password, char generoUser, int edadUser, boolean active) {
         this.nombreUser = nombreUser;
         this.username = username;
         this.password = password;
         this.generoUser = generoUser;
         this.edadUser = edadUser;
+        this.active = true;
     }
 
     public String getNombreUser() {
