@@ -9,12 +9,12 @@ package william_martinez_proyecto2_q3;
  * @author DELL
  */
 public class PgInteracciones extends javax.swing.JPanel {
-
-    /**
-     * Creates new form pgInteracciones
-     */
-    public PgInteracciones() {
+    
+    Pagina_Inicial pgInicial;
+    
+    public PgInteracciones(Pagina_Inicial pgInicial) {
         initComponents();
+        this.pgInicial= pgInicial;
     }
 
     /**

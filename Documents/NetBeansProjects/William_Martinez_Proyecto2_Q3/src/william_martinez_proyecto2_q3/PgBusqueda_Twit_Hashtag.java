@@ -1,20 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package william_martinez_proyecto2_q3;
 
-/**
- *
- * @author DELL
- */
 public class PgBusqueda_Twit_Hashtag extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PgBusqueda_Twit_Hashtag
-     */
-    public PgBusqueda_Twit_Hashtag() {
+    Pagina_Inicial pgInicial;
+    
+    public PgBusqueda_Twit_Hashtag(Pagina_Inicial pgInicial) {
         initComponents();
+        this.pgInicial=pgInicial;
     }
 
     /**

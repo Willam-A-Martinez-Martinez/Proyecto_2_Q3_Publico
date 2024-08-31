@@ -8,13 +8,13 @@ package william_martinez_proyecto2_q3;
  *
  * @author DELL
  */
-public class PgTime_Line extends javax.swing.JPanel {
-
-    /**
-     * Creates new form PgTime_Line
-     */
-    public PgTime_Line() {
+public class PgTimeline extends javax.swing.JPanel {
+    
+    Pagina_Inicial pgInicial;
+    
+    public PgTimeline(Pagina_Inicial pgInicial) {
         initComponents();
+        this.pgInicial=pgInicial;
     }
 
     /**

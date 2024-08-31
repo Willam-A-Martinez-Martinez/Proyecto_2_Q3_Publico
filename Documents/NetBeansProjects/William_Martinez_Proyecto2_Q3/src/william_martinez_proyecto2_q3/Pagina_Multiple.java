@@ -49,13 +49,18 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
         getContentPane().add(jPanel1);
 
-        jButton4.setText("jButton1");
+        jButton4.setText("Timeline");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
-        jButton7.setText("jButton1");
+        jButton7.setText("Busqueda");
 
-        jButton9.setText("jButton1");
+        jButton9.setText("Editar perfil");
 
-        jButton10.setText("jButton1");
+        jButton10.setText("Interacciones");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -116,8 +121,15 @@ public class Pagina_Multiple extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        PgTimeline pgTimeline = new PgTimeline(pgInicial);
+        PgInteracciones pgInteracciones = new PgInteracciones(pgInicial);
+        PgEditar_perfil pgEditar_Perfil = new PgEditar_perfil(pgInicial);
+        PgBusqueda_Twit_Hashtag pgBusquedaTwitHashtag = new PgBusqueda_Twit_Hashtag(pgInicial);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

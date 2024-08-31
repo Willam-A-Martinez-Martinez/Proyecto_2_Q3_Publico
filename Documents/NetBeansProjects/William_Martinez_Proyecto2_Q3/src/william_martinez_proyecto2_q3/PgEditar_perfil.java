@@ -10,10 +10,9 @@ package william_martinez_proyecto2_q3;
  */
 public class PgEditar_perfil extends javax.swing.JPanel {
 
-    /**
-     * Creates new form pgEditar_perfil
-     */
-    public PgEditar_perfil() {
+    Pagina_Inicial pgInicial;
+    
+    public PgEditar_perfil(Pagina_Inicial pgInicial) {
         initComponents();
     }
 
