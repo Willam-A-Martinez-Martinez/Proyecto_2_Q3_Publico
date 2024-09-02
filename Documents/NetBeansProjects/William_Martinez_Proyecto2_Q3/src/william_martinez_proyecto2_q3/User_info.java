@@ -1,8 +1,8 @@
 package william_martinez_proyecto2_q3;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+
+
 
 public class User_info {
     /*
@@ -19,14 +19,16 @@ public class User_info {
     private char generoUser;
     private int edadUser;
     private boolean active;
+    private LocalDateTime fechaActual;
 
-    public User_info(String nombreUser, String username, String password, char generoUser, int edadUser, boolean active) {
+    public User_info(String nombreUser, String username, String password, char generoUser, int edadUser) {
         this.nombreUser = nombreUser;
         this.username = username;
         this.password = password;
         this.generoUser = generoUser;
         this.edadUser = edadUser;
         this.active = true;
+        this.fechaActual=LocalDateTime.now();
     }
 
     public String getNombreUser() {
@@ -75,6 +77,10 @@ public class User_info {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public LocalDateTime getFechaActual() {
+        return fechaActual;
     }
     
     

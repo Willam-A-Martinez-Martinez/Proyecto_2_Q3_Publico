@@ -4,6 +4,8 @@
  */
 package william_martinez_proyecto2_q3;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author DELL
@@ -15,6 +17,7 @@ public class PgInteracciones extends javax.swing.JPanel {
     public PgInteracciones(Pagina_Inicial pgInicial) {
         initComponents();
         this.pgInicial= pgInicial;
+        setPreferredSize(new Dimension(770, 560));  
     }
 
     /**
@@ -26,16 +29,7 @@ public class PgInteracciones extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 529, Short.MAX_VALUE)
-        );
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
     }// </editor-fold>//GEN-END:initComponents
 
 
