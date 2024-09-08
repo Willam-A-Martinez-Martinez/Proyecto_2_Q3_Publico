@@ -250,17 +250,23 @@ public class Pagina_Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAInicioSesionActionPerformed
 
     private void botonRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegActionPerformed
+        Pagina_Multiple pgMultiple = new Pagina_Multiple(pgInicial);
         
         String nombre = bloqueRegNombre.getText(), username = bloqueRegUsername.getText(), edadStr = bloqueRegEdad.getText();
         String generoStr = generoRegGenero.getSelectedItem().toString() , contra = bloqueRegContra.getText(), contraConfirm = bloqueRegConfirmContra.getText();
         int edadInt = Integer.parseInt(edadStr), largoGenero= generoStr.length();
         char generoChar = generoStr.charAt(0);
         
-        User_info usuario= pgInicial.manejoUser.buscar(nombre);
+        System.out.println("Username: " + username);
+    System.out.println("Nombre: " + nombre);
+    System.out.println("Edad: " + edadInt);
+    System.out.println("Genero: " + generoChar);
+        
+        User_info usuario= pgInicial.manejoUser.buscar(username);
         
         if(usuario == null && edadInt>0 && edadInt<100 && (generoChar=='M' || generoChar=='F' || generoChar=='m' || generoChar=='f') && contra.equalsIgnoreCase(contraConfirm) && largoGenero==1){
             pgInicial.manejoUser.agregarUsuario(username, nombre, contra, generoChar, edadInt);
-            pgInicial.setVisible(true);
+            pgMultiple.setVisible(true);
             this.setVisible(false);
         }
         else if(usuario!=null){

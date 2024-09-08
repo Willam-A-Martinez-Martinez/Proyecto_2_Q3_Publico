@@ -14,19 +14,39 @@ public class Manejo_user {
                 return eph;
             }    
         }
+        System.out.println("Usuario no encontrado: " + username);
         return null;
     }
     
     public boolean agregarUsuario(String username, String nombreUser, String password, char generoUser, int edadUser){
-        if (buscar(username)==null){
-            for (int i=0; i<userInfo.length;i++){
-                if(userInfo[i]==null){
-                    userInfo[i]= new User_info(username, nombreUser, password, generoUser, edadUser);
-                    return true;
-                }
-            }
+    if (buscar(username) != null) {
+        System.out.println("El usuario ya está registrado: " + username);
+        return false; // Usuario ya registrado
+    }
+
+    // Intentar agregar el nuevo usuario en la primera posición vacía
+    for (int i = 0; i < userInfo.length; i++) {
+        if (userInfo[i] == null) {
+            userInfo[i] = new User_info(username, nombreUser, password, generoUser, edadUser);
+            System.out.println("Usuario registrado con éxito: " + username);
+            return true;
         }
-        return false;
+    }
+    
+    // Si el arreglo está lleno
+    System.out.println("No se puede registrar al usuario, el sistema está lleno.");
+    return false;
+
+
+//        if (buscar(username)==null){
+//            for (int i=0; i<userInfo.length;i++){
+//                if(userInfo[i]==null){
+//                    userInfo[i]= new User_info(username, nombreUser, password, generoUser, edadUser);
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
     }
     
 }

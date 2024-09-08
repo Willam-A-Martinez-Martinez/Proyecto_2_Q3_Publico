@@ -163,9 +163,11 @@ public class Pagina_Inicial extends javax.swing.JFrame {
 
         Pagina_Multiple pgMultiple = new Pagina_Multiple(this);
         String texto= bloqueUsuarioTxt7.getText();
+        System.out.println("Buscando usuario: " + texto);
         User_info user =manejoUser.buscar(texto);
+        System.out.println("Usuario encontrado: " + user);
         System.out.println(user);
-        if(user!=null){
+        if(user!=null ){
             pgMultiple.setVisible(true);
             this.setVisible(false);
         }
