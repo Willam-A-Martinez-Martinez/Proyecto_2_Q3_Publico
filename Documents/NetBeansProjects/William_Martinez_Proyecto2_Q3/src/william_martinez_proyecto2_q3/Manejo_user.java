@@ -18,24 +18,45 @@ public class Manejo_user {
         return null;
     }
     
-    public boolean agregarUsuario(String username, String nombreUser, String password, char generoUser, int edadUser){
-    if (buscar(username) != null) {
-        System.out.println("El usuario ya está registrado: " + username);
-        return false; // Usuario ya registrado
+    public boolean agregarUsuario(String username, String nombreUser, String password, char generoUser, int edadUser) {
+        if (buscar(username) != null) {
+            System.out.println("El usuario ya esta registrado");
+            return false;
+        }
+        
+        for (int i = 0; i < userInfo.length; i++) {
+            if (userInfo[i] == null) {
+                userInfo[i] = new User_info(nombreUser, username, password, generoUser, edadUser);
+                System.out.println("Usuario registrado exitosamente:" +username);
+                return true;
+            }
+        }
+        
+        System.out.println("No se puede registrar al usuario");
+        return false;
     }
 
-    // Intentar agregar el nuevo usuario en la primera posición vacía
-    for (int i = 0; i < userInfo.length; i++) {
-        if (userInfo[i] == null) {
-            userInfo[i] = new User_info(username, nombreUser, password, generoUser, edadUser);
-            System.out.println("Usuario registrado con éxito: " + username);
-            return true;
-        }
-    }
-    
-    // Si el arreglo está lleno
-    System.out.println("No se puede registrar al usuario, el sistema está lleno.");
-    return false;
+
+
+
+
+//    if (buscar(username) != null) {
+//        System.out.println("El usuario ya está registrado: " + username);
+//        return false; // Usuario ya registrado
+//    }
+//
+//    // Intentar agregar el nuevo usuario en la primera posición vacía
+//    for (int i = 0; i < userInfo.length; i++) {
+//        if (userInfo[i] == null) {
+//            userInfo[i] = new User_info(username, nombreUser, password, generoUser, edadUser);
+//            System.out.println("Usuario registrado con éxito: " + username);
+//            return true;
+//        }
+//    }
+//    
+//    // Si el arreglo está lleno
+//    System.out.println("No se puede registrar al usuario, el sistema está lleno.");
+//    return false;
 
 
 //        if (buscar(username)==null){
@@ -48,5 +69,3 @@ public class Manejo_user {
 //        }
 //        return false;
     }
-    
-}

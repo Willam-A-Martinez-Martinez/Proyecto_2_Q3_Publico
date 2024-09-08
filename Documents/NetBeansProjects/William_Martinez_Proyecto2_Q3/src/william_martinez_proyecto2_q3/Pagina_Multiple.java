@@ -2,6 +2,7 @@ package william_martinez_proyecto2_q3;
 
 import java.awt.Dimension;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 public class Pagina_Multiple extends javax.swing.JFrame {
     Pagina_Inicial pgInicial;
@@ -149,8 +150,19 @@ public class Pagina_Multiple extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonPgCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPgCerrarSesionActionPerformed
-        pgInicial.setVisible(true);
-        this.setVisible(false);
+        int opcion = JOptionPane.showConfirmDialog(null, 
+            "¿Estás seguro de que quieres cerrar sesion?", 
+            "Confirmar acción", 
+            JOptionPane.YES_NO_OPTION);
+        
+        if (opcion==JOptionPane.YES_OPTION){
+            pgInicial.setVisible(true);
+            this.setVisible(false);   
+        }
+        
+        else if(opcion==JOptionPane.NO_OPTION){
+            JOptionPane.showMessageDialog(rootPane, "Cierre de sesion cancelado.");
+        }
     }//GEN-LAST:event_botonPgCerrarSesionActionPerformed
 
     private void botnonPgBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botnonPgBusquedaActionPerformed
