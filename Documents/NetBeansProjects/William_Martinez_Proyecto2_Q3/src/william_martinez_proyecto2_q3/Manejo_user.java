@@ -18,6 +18,16 @@ public class Manejo_user {
         return null;
     }
     
+    public  User_info buscarLogIn(String username, String password){
+        for(User_info eph: userInfo){
+            if(eph!=null && username.equals(eph.getUsername()) && password.equals(eph.getPassword())){
+                return eph;
+            }    
+        }
+        System.out.println("Usuario no encontrado: " + username);
+        return null;
+    }
+    
     public boolean agregarUsuario(String username, String nombreUser, String password, char generoUser, int edadUser) {
         if (buscar(username) != null) {
             System.out.println("El usuario ya esta registrado");

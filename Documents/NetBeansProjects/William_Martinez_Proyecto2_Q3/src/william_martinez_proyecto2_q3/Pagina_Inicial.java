@@ -19,13 +19,13 @@ public class Pagina_Inicial extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel25 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
-        bloqueUsuarioTxt7 = new javax.swing.JTextField();
+        bloqueUsuarioTxt = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         botonARegistro7 = new javax.swing.JButton();
         botonInicioSesion7 = new javax.swing.JButton();
         jLabel32 = new javax.swing.JLabel();
-        bloqueContraTxt7 = new javax.swing.JPasswordField();
+        bloqueContraTxt = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -40,8 +40,8 @@ public class Pagina_Inicial extends javax.swing.JFrame {
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel29.setText("Switch");
 
-        bloqueUsuarioTxt7.setBackground(new java.awt.Color(255, 255, 255));
-        bloqueUsuarioTxt7.addActionListener(new java.awt.event.ActionListener() {
+        bloqueUsuarioTxt.setBackground(new java.awt.Color(255, 255, 255));
+        bloqueUsuarioTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bloqueUsuarioTxtActionPerformed(evt);
             }
@@ -83,8 +83,8 @@ public class Pagina_Inicial extends javax.swing.JFrame {
 
         jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/switch_LogoPng.png"))); // NOI18N
 
-        bloqueContraTxt7.setBackground(new java.awt.Color(255, 255, 255));
-        bloqueContraTxt7.addActionListener(new java.awt.event.ActionListener() {
+        bloqueContraTxt.setBackground(new java.awt.Color(255, 255, 255));
+        bloqueContraTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bloqueContraTxtActionPerformed(evt);
             }
@@ -109,11 +109,11 @@ public class Pagina_Inicial extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bloqueUsuarioTxt7, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bloqueUsuarioTxt, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(botonARegistro7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bloqueContraTxt7))
+                            .addComponent(bloqueContraTxt))
                         .addGap(47, 47, 47))
                     .addGroup(jPanel25Layout.createSequentialGroup()
                         .addGap(117, 117, 117)
@@ -135,11 +135,11 @@ public class Pagina_Inicial extends javax.swing.JFrame {
                     .addGroup(jPanel25Layout.createSequentialGroup()
                         .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(bloqueUsuarioTxt7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bloqueUsuarioTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bloqueContraTxt7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bloqueContraTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
                         .addComponent(botonInicioSesion7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -162,17 +162,19 @@ public class Pagina_Inicial extends javax.swing.JFrame {
     private void botonInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInicioSesionActionPerformed
 
         Pagina_Multiple pgMultiple = new Pagina_Multiple(this);
-        String texto= bloqueUsuarioTxt7.getText();
-        System.out.println("Buscando usuario: " + texto);
-        User_info user =manejoUser.buscar(texto);
+        String username= bloqueUsuarioTxt.getText();
+        String password= bloqueContraTxt.getText();
+        System.out.println("Buscando usuario: " + username);
+        User_info user =manejoUser.buscarLogIn(username, password);
         System.out.println("Usuario encontrado: " + user);
+        
         System.out.println(user);
         if(user!=null ){
             pgMultiple.setVisible(true);
             this.setVisible(false);
         }
         else{
-            JOptionPane.showMessageDialog(rootPane, "Ingrese un usuario registrado de lo contrario registrarse.");
+            JOptionPane.showMessageDialog(rootPane, "Ingrese un usuario y contraseña registrado de lo contrario registrarse.");
         }
     }//GEN-LAST:event_botonInicioSesionActionPerformed
 
@@ -219,8 +221,8 @@ public class Pagina_Inicial extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField bloqueContraTxt7;
-    private javax.swing.JTextField bloqueUsuarioTxt7;
+    private javax.swing.JPasswordField bloqueContraTxt;
+    private javax.swing.JTextField bloqueUsuarioTxt;
     private javax.swing.JButton botonARegistro7;
     private javax.swing.JButton botonInicioSesion7;
     private javax.swing.JLabel jLabel29;

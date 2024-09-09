@@ -19,7 +19,9 @@ public class User_info {
     private char generoUser;
     private int edadUser;
     private boolean active;
+    private boolean logged;
     private LocalDateTime fechaActual;
+    
 
     public User_info(String nombreUser, String username, String password, char generoUser, int edadUser) {
         this.nombreUser = nombreUser;
@@ -27,7 +29,8 @@ public class User_info {
         this.password = password;
         this.generoUser = generoUser;
         this.edadUser = edadUser;
-        this.active = true;
+        active = true;
+        logged = false;
         this.fechaActual=LocalDateTime.now();
     }
 
