@@ -11,7 +11,6 @@ public class Twits {
         twits = new String[tamaño];
         contadorDeTwits=0;
     }
-//hi
     
     public String getTwits(){
         for(String eph: twits){
@@ -36,6 +35,14 @@ public class Twits {
         }
         
         return false;        
+    }
+    
+    public void imprimirTwits(){
+        for(int i = 0 ; i<twits.length; i++){
+            if(twits[i]!=null){
+                System.out.println(twits[i]);
+            }
+        }
     }
     
     

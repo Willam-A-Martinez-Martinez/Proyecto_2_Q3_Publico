@@ -165,7 +165,7 @@ public class Pagina_Inicial extends javax.swing.JFrame {
         String username= bloqueUsuarioTxt.getText();
         String password= bloqueContraTxt.getText();
         System.out.println("Buscando usuario: " + username);
-        User_info user =manejoUser.buscarLogIn(username, password);
+        User_info user =manejoUser.buscarLogged(username, password);
         System.out.println("Usuario encontrado: " + user);
         
         System.out.println(user);

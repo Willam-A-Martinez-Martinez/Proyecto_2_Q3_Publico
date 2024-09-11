@@ -272,7 +272,7 @@ public class Pagina_Registro extends javax.swing.JFrame {
         
         
         if(usuario == null && edadInt>0 && edadInt<100 && (generoChar=='M' || generoChar=='F') && contra.equalsIgnoreCase(contraConfirm)){
-            pgInicial.manejoUser.agregarUsuario(username, nombre, contra, generoChar, edadInt);
+            pgInicial.manejoUser.crearUsuario(username, nombre, contra, generoChar, edadInt);
             pgMultiple.setVisible(true);
             this.setVisible(false);
         }

@@ -19,6 +19,17 @@ public class Manejo_user {
         System.out.println("Usuario no encontrado: " + username);
         return null;
     }
+    
+    public  User_info buscarLogged(String username, String contraseña){
+        for(User_info eph: userInfo){
+            if(eph!=null && username.equals(eph.getUsername()) && contraseña.equals(eph.getPassword())){
+                return eph;
+            }    
+        }
+        System.out.println("Usuario no encontrado: " + username);
+        return null;
+    }
+    
      // Verificacion de si el username es Unico.
     public boolean crearUsuario(String username, String nombreUser, String password, char generoUser, int edadUser){
 if (buscar(username) != null) {
