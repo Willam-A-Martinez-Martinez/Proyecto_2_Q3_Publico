@@ -15,6 +15,9 @@ public class User_info {
 - Edad del usuario (INT)
 
     */
+    private Followers followers= new Followers();
+    private Following following= new Following();
+    
     private String nombreUser, username, password;
     private char generoUser;
     private int edadUser;
@@ -45,6 +48,10 @@ public class User_info {
 
     public String getPassword() {
         return password;
+    }
+    
+    public void setLogged(boolean logged){
+        this.logged = logged;
     }
 
     public char getGeneroUser() {

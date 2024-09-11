@@ -46,7 +46,9 @@ public class Manejo_user {
         return false;
     }
 
-
+    public User_info[] getLista(){
+        return userInfo;
+    }
 
 
 
