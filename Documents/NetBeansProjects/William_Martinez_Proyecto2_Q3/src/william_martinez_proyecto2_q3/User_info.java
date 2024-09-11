@@ -15,15 +15,16 @@ public class User_info {
 - Edad del usuario (INT)
 
     */
-    private Followers followers= new Followers();
-    private Following following= new Following();
-    
     private String nombreUser, username, password;
     private char generoUser;
     private int edadUser;
     private boolean active;
-    private boolean logged;
     private LocalDateTime fechaActual;
+    private boolean isActive;
+    private String followers[];
+    private String following[];
+    private int totalFollowers;
+    private int totalFollowing;
     
 
     public User_info(String nombreUser, String username, String password, char generoUser, int edadUser) {
@@ -32,26 +33,37 @@ public class User_info {
         this.password = password;
         this.generoUser = generoUser;
         this.edadUser = edadUser;
-        active = true;
-        logged = false;
+        this.active = true;
         this.fechaActual=LocalDateTime.now();
+        this.followers = new String[25];  // Máximo 100 seguidores
+        this.following = new String[25];  // Máximo 100 usuarios que sigue
+        this.totalFollowers = 0;
+        this.totalFollowing = 0;
     }
+   
 
     public String getNombreUser() {
         return nombreUser;
+    }
+
+    public void setNombreUser(String nombreUser) {
+        this.nombreUser = nombreUser;
     }
 
     public String getUsername() {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getPassword() {
         return password;
     }
-    
-    public void setLogged(boolean logged){
-        this.logged = logged;
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public char getGeneroUser() {
@@ -77,11 +89,56 @@ public class User_info {
     public void setActive(boolean active) {
         this.active = active;
     }
+      
+    public void desactivarCuenta() {
+        this.active = false;
+    }
 
     public LocalDateTime getFechaActual() {
         return fechaActual;
     }
-    
-    
-    
+      public boolean yaEsFollower(String usernameFollower) {
+        for (int i = 0; i < totalFollowers; i++) {
+            if (followers[i].equals(usernameFollower)) {
+                return true;
+            }
+        }
+        return false;
+      }
+      
+         // Métodos para manejar followers
+    public void agregarFollower(String usernameFollower) {
+        if (totalFollowers < 100 && !yaEsFollower(usernameFollower)) {
+            followers[totalFollowers++] = usernameFollower;
+        }
+    }
+      
+      public void agregarFollowing(String usernameFollowing) {
+        if (totalFollowing < following.length && !yaSigueA(usernameFollowing)) {
+            following[totalFollowing++] = usernameFollowing;
+        }
+    }
+      
+      public boolean yaSigueA(String usernameFollowing) {
+        for (int i = 0; i < totalFollowing; i++) {
+            if (following[i].equals(usernameFollowing)) {
+                return true;
+            }
+        }
+        return false;
+    }
+       
+       // Mostrar información del perfil del usuario
+    public void mostrarInfo() {
+        System.out.println("Nombre: " + nombreUser);
+        System.out.println("Género: " + generoUser);
+        System.out.println("Username: " + username);
+        System.out.println("Edad: " + edadUser);
+        System.out.println("Fecha de Entrada: " + fechaActual);
+        System.out.println("Estado: " + (isActive ? "Activa" : "Desactivada"));
+    }
 }
+
+    
+    
+
