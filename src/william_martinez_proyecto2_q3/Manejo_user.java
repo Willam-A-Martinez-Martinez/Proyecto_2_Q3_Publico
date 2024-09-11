@@ -60,6 +60,17 @@ if (buscar(username) != null) {
             System.out.println("Usuario no encontrado.");
         }
     }
+    
+      // Mostrar la lista de todos los usuarios
+    public void mostrarUsuarios() {
+        System.out.println("Usuarios en el sistema:");
+        for (int i = 0; i < totalUsers; i++) {
+            if (userInfo[i] != null) {
+                System.out.println("- " + userInfo[i].getUsername());
+            }
+        }
+    }
+
 
 
       
