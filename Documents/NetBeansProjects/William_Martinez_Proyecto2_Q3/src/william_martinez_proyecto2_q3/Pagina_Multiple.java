@@ -11,7 +11,7 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         initComponents();
         this.pgInicial = pgInicial;
         this.setLocation(0, 0);
-        hiTimeline.setText("hola");
+        hi.setText("hola");
 //        PgTimeline pgTimeline= new PgTimeline(pgInicial);
 //        
 //        cambioPg(pgTimeline);
@@ -27,25 +27,24 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         background = new javax.swing.JPanel();
         cajaPaneles = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        HomeB = new javax.swing.JLabel();
+        TituloTxt = new javax.swing.JLabel();
         botonPgEditar_Perfil = new javax.swing.JButton();
         botonPgCerrarSesion = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        hiTimeline = new javax.swing.JTextArea();
-        escriTwit = new javax.swing.JTextField();
+        hi = new javax.swing.JTextArea();
+        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        enviartwit = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        Busquedas = new javax.swing.JTextArea();
+        jTextArea1 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        BusquedaHastags = new javax.swing.JTextArea();
-        BuscarAt = new javax.swing.JTextField();
-        BuscarHastags = new javax.swing.JTextField();
-        Home2 = new javax.swing.JLabel();
+        jTextArea2 = new javax.swing.JTextArea();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
 
         jInternalFrame1.setVisible(true);
 
@@ -75,10 +74,10 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        HomeB.setFont(new java.awt.Font("Roboto Black", 0, 11)); // NOI18N
-        HomeB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        HomeB.setText("SWITCH");
-        jPanel4.add(HomeB, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 12, 150, 39));
+        TituloTxt.setFont(new java.awt.Font("Roboto Black", 0, 11)); // NOI18N
+        TituloTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TituloTxt.setText("SWITCH");
+        jPanel4.add(TituloTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 12, 150, 39));
 
         botonPgEditar_Perfil.setBackground(new java.awt.Color(51, 51, 51));
         botonPgEditar_Perfil.setFont(new java.awt.Font("Roboto Black", 0, 11)); // NOI18N
@@ -91,7 +90,7 @@ public class Pagina_Multiple extends javax.swing.JFrame {
                 botonPgEditar_PerfilActionPerformed(evt);
             }
         });
-        jPanel4.add(botonPgEditar_Perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 150, -1));
+        jPanel4.add(botonPgEditar_Perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 150, -1));
 
         botonPgCerrarSesion.setBackground(new java.awt.Color(51, 51, 51));
         botonPgCerrarSesion.setFont(new java.awt.Font("Roboto Black", 0, 11)); // NOI18N
@@ -104,55 +103,42 @@ public class Pagina_Multiple extends javax.swing.JFrame {
                 botonPgCerrarSesionActionPerformed(evt);
             }
         });
-        jPanel4.add(botonPgCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 150, -1));
+        jPanel4.add(botonPgCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 150, -1));
 
         jPanel5.setBackground(new java.awt.Color(219, 219, 255));
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("En que estas pensando?");
 
-        hiTimeline.setEditable(false);
-        hiTimeline.setColumns(20);
-        hiTimeline.setRows(5);
-        jScrollPane1.setViewportView(hiTimeline);
+        hi.setEditable(false);
+        hi.setColumns(20);
+        hi.setRows(5);
+        jScrollPane1.setViewportView(hi);
 
-        escriTwit.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                escriTwitActionPerformed(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Twits");
 
-        enviartwit.setText("Enviar twit");
-        enviartwit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enviartwitActionPerformed(evt);
-            }
-        });
+        jButton1.setText("Enviar twit");
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Buscar menciones: ");
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Buscar Hashtags:");
 
-        Busquedas.setColumns(20);
-        Busquedas.setRows(5);
-        jScrollPane2.setViewportView(Busquedas);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
 
-        BusquedaHastags.setColumns(20);
-        BusquedaHastags.setRows(5);
-        jScrollPane3.setViewportView(BusquedaHastags);
-
-        BuscarAt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarAtActionPerformed(evt);
-            }
-        });
-
-        BuscarHastags.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarHastagsActionPerformed(evt);
-            }
-        });
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane3.setViewportView(jTextArea2);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -162,20 +148,21 @@ public class Pagina_Multiple extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(enviartwit)
+                        .addComponent(jButton1)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(escriTwit)
+                            .addComponent(jTextField1)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
                     .addComponent(jScrollPane3)
-                    .addComponent(BuscarAt)
-                    .addComponent(BuscarHastags))
+                    .addComponent(jTextField2)
+                    .addComponent(jTextField3))
                 .addGap(23, 23, 23))
         );
         jPanel5Layout.setVerticalGroup(
@@ -187,31 +174,27 @@ public class Pagina_Multiple extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(escriTwit, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(enviartwit)
+                        .addComponent(jButton1)
                         .addGap(16, 16, 16)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
                         .addComponent(jScrollPane1))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(BuscarAt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addGap(27, 27, 27)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BuscarHastags, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)))
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 780, 560));
-
-        Home2.setText("Home");
-        jPanel4.add(Home2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 140, 20));
 
         background.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 560));
 
@@ -251,39 +234,18 @@ public class Pagina_Multiple extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonPgEditar_PerfilActionPerformed
 
-    private void escriTwitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escriTwitActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_escriTwitActionPerformed
-
-    private void enviartwitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviartwitActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_enviartwitActionPerformed
-
-    private void BuscarAtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarAtActionPerformed
-     
-    }//GEN-LAST:event_BuscarAtActionPerformed
-
-    private void BuscarHastagsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarHastagsActionPerformed
-        // TODO add your handling code here:    
-
-    }//GEN-LAST:event_BuscarHastagsActionPerformed
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField BuscarAt;
-    private javax.swing.JTextField BuscarHastags;
-    private javax.swing.JTextArea BusquedaHastags;
-    private javax.swing.JTextArea Busquedas;
-    private javax.swing.JLabel Home2;
-    private javax.swing.JLabel HomeB;
+    private javax.swing.JLabel TituloTxt;
     private javax.swing.JPanel background;
     private javax.swing.JButton botonPgCerrarSesion;
     private javax.swing.JButton botonPgEditar_Perfil;
     private javax.swing.JPanel cajaPaneles;
-    private javax.swing.JButton enviartwit;
-    private javax.swing.JTextField escriTwit;
-    private javax.swing.JTextArea hiTimeline;
+    private javax.swing.JTextArea hi;
+    private javax.swing.JButton jButton1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -296,5 +258,10 @@ public class Pagina_Multiple extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
