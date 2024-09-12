@@ -1,24 +1,26 @@
 package william_martinez_proyecto2_q3;
 
-public class Twits {
+
+
+public class Twits_Generales {
     
     
     
     private String twits[];
     private int contadorDeTwits;
     
-    public Twits(){
+    public Twits_Generales(){
         twits = new String[20];
         contadorDeTwits=0;
     }
     
-    public boolean buscarTwits(String twit){
+    public String buscarTwits(String twit){
         for (int posicionTwits = 0; posicionTwits < twits.length; posicionTwits++) {
             if(twits[posicionTwits]!=null){
-                return true;
+                return twit;
             }
         }
-        return false;
+        return null;
     }
     
     public String getTwits(){
@@ -31,19 +33,15 @@ public class Twits {
     }
 
     public boolean agregarTwit(String twit){
-        for(int i=0; twits.length>i ; i++){
-            if(twits[i].equals(twit)){
-                return false;
-            }
-        }
-        
-        if(contadorDeTwits<twits.length){
+        String busquedaTwit = buscarTwits(twit);
+        if(busquedaTwit==null){
             twits[contadorDeTwits]=twit;
             contadorDeTwits++;
             return true;
         }
         
-        return false;        
+        return false;  
+
     }
     
     public String imprimirTwits(){

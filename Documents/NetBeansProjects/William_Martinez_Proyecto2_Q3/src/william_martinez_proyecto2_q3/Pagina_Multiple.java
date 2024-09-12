@@ -234,12 +234,15 @@ public class Pagina_Multiple extends javax.swing.JFrame {
     }//GEN-LAST:event_botonPgEditar_PerfilActionPerformed
 
     private void botonEnviarTwitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEnviarTwitActionPerformed
+
+//        System.out.println(pgInicial.loggedUser.isLogged());
         String contenidoTwit= zonaEscribir.getText();
         System.out.println(contenidoTwit);
         if(contenidoTwit.length()<=140 && contenidoTwit.length()>0){
             boolean twit = pgInicial.twits.agregarTwit(contenidoTwit);
-            
+            System.out.println(twit);
             if (twit){
+                System.out.println(pgInicial.twits.imprimirTwits());
                 twitsTimeline.setText(pgInicial.twits.imprimirTwits());
             }
         }else{
