@@ -7,9 +7,18 @@ public class Twits {
     private String twits[];
     private int contadorDeTwits;
     
-    public Twits(int tamaño){
-        twits = new String[tamaño];
+    public Twits(){
+        twits = new String[20];
         contadorDeTwits=0;
+    }
+    
+    public boolean buscarTwits(String twit){
+        for (int posicionTwits = 0; posicionTwits < twits.length; posicionTwits++) {
+            if(twits[posicionTwits]!=null){
+                return true;
+            }
+        }
+        return false;
     }
     
     public String getTwits(){
@@ -37,12 +46,14 @@ public class Twits {
         return false;        
     }
     
-    public void imprimirTwits(){
+    public String imprimirTwits(){
+        String twitPrint = "";
         for(int i = 0 ; i<twits.length; i++){
             if(twits[i]!=null){
-                System.out.println(twits[i]);
+                twitPrint+=twits[i];
             }
         }
+        return twitPrint;
     }
     
     

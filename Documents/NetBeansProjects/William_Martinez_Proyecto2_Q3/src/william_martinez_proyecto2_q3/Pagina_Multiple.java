@@ -11,7 +11,6 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         initComponents();
         this.pgInicial = pgInicial;
         this.setLocation(0, 0);
-        hi.setText("hola");
 //        PgTimeline pgTimeline= new PgTimeline(pgInicial);
 //        
 //        cambioPg(pgTimeline);
@@ -33,8 +32,7 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        hi = new javax.swing.JTextArea();
-        zonaEscribir = new javax.swing.JTextField();
+        twitsTimeline = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         botonEnviarTwit = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -45,6 +43,7 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
+        zonaEscribir = new javax.swing.JTextField();
 
         jInternalFrame1.setVisible(true);
 
@@ -110,21 +109,20 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("En que estas pensando?");
 
-        hi.setEditable(false);
-        hi.setColumns(20);
-        hi.setRows(5);
-        jScrollPane1.setViewportView(hi);
-
-        zonaEscribir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                zonaEscribirActionPerformed(evt);
-            }
-        });
+        twitsTimeline.setEditable(false);
+        twitsTimeline.setColumns(20);
+        twitsTimeline.setRows(5);
+        jScrollPane1.setViewportView(twitsTimeline);
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Twits");
 
         botonEnviarTwit.setText("Enviar twit");
+        botonEnviarTwit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEnviarTwitActionPerformed(evt);
+            }
+        });
 
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Buscar menciones: ");
@@ -146,14 +144,14 @@ public class Pagina_Multiple extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(botonEnviarTwit)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(zonaEscribir)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonEnviarTwit))
+                    .addComponent(zonaEscribir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
@@ -170,17 +168,19 @@ public class Pagina_Multiple extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(zonaEscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(zonaEscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonEnviarTwit)
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(botonEnviarTwit))
                         .addGap(14, 14, 14)
                         .addComponent(jScrollPane1))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,9 +233,19 @@ public class Pagina_Multiple extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonPgEditar_PerfilActionPerformed
 
-    private void zonaEscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zonaEscribirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_zonaEscribirActionPerformed
+    private void botonEnviarTwitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEnviarTwitActionPerformed
+        String contenidoTwit= zonaEscribir.getText();
+        System.out.println(contenidoTwit);
+        if(contenidoTwit.length()<=140 && contenidoTwit.length()>0){
+            boolean twit = pgInicial.twits.agregarTwit(contenidoTwit);
+            
+            if (twit){
+                twitsTimeline.setText(pgInicial.twits.imprimirTwits());
+            }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Ingreso mas de 140 letras.");
+        }
+    }//GEN-LAST:event_botonEnviarTwitActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TituloTxt;
@@ -244,7 +254,6 @@ public class Pagina_Multiple extends javax.swing.JFrame {
     private javax.swing.JButton botonPgCerrarSesion;
     private javax.swing.JButton botonPgEditar_Perfil;
     private javax.swing.JPanel cajaPaneles;
-    private javax.swing.JTextArea hi;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -261,6 +270,7 @@ public class Pagina_Multiple extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextArea twitsTimeline;
     private javax.swing.JTextField zonaEscribir;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,10 +5,13 @@ import javax.swing.JOptionPane;
 public class Pagina_Inicial extends javax.swing.JFrame {
     
     public Manejo_user manejoUser;
+    public Twits twits;
     
     public Pagina_Inicial() {
         initComponents();
+        twits= new Twits();
         manejoUser = new Manejo_user();
+        
         this.setLocation(0, 0);
     }
 
