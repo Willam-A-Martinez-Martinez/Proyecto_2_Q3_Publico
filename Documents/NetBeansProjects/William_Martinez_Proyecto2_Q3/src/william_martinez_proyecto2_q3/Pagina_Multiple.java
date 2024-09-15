@@ -220,6 +220,7 @@ public class Pagina_Multiple extends javax.swing.JFrame {
             JOptionPane.YES_NO_OPTION);
 
         if (opcion==JOptionPane.YES_OPTION){
+            pgInicial.loggedUser.unloggedUser();
             pgInicial.setVisible(true);
             this.setVisible(false);
         }
