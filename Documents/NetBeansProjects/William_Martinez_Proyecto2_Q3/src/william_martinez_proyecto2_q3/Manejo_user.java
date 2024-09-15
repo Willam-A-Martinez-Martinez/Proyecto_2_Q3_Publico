@@ -1,15 +1,20 @@
 package william_martinez_proyecto2_q3;
 
+
+import java.util.HashMap;
+import java.util.Map;
 public class Manejo_user {
     
     User_info[] userInfo;
     private final int totalUsers;
-    
+     private Map<String, Integer> hashtagTrends; // Para almacenar hashtags y su frecuencia.
     
     
     public Manejo_user(){
         userInfo = new User_info[25];
         totalUsers=0;
+        hashtagTrends = new HashMap<>(); // Inicializar el mapa de tendencias de hashtags.
+    
     }
      
     public  User_info buscar(String username){
@@ -38,6 +43,89 @@ public class Manejo_user {
             return usuario.getTwitsPersonales().imprimirTwits();
         }
         return "Usuario no encontrado: " + username;
+    }
+    
+    // Método para extraer hashtags de un twit y almacenarlos en el mapa de tendencias
+    private void extraerHashtags(String twit) {
+        String[] palabras = twit.split(" ");
+        for (String palabra : palabras) {
+            if (palabra.startsWith("#")) {
+                hashtagTrends.put(palabra, hashtagTrends.getOrDefault(palabra, 0) + 1);
+            }
+        }
+    }
+
+    // Mostrar los hashtags que están en tendencia (trending)
+    public void mostrarTrendingHashtags() {
+        System.out.println("Hashtags en tendencia:");
+        for (Map.Entry<String, Integer> entry : hashtagTrends.entrySet()) {
+            System.out.println(entry.getKey() + " - Usado " + entry.getValue() + " veces.");
+        }
+    }
+
+    // Buscar twits por hashtag sin ArrayList
+    public String[] buscarTwitsPorHashtag(String hashtag) {
+        String[] twitsConHashtag = new String[100]; // Suponemos que tenemos hasta 100 twits con el hashtag.
+        int index = 0;
+        
+        for (User_info usuario : userInfo) {
+            if (usuario != null) {
+                String[] twitsUsuario = usuario.getTwitsPersonales().getTwits();
+                for (String twit : twitsUsuario) {
+                    if (twit != null && twit.contains(hashtag)) {
+                        twitsConHashtag[index] = twit;
+                        index++;
+                    }
+                }
+            }
+        }
+        
+        // Retornar solo los twits no nulos
+        return reducirArreglo(twitsConHashtag, index);
+    }
+    
+    
+     // Búsqueda de menciones de un usuario en todos los twits sin ArrayList
+    public String[] buscarMenciones(String username) {
+        String[] menciones = new String[100]; // Suponemos que hay hasta 100 menciones.
+        int index = 0;
+
+        for (User_info usuario : userInfo) {
+            if (usuario != null) {
+                String[] twitsUsuario = usuario.getTwitsPersonales().getTwits();
+                for (String twit : twitsUsuario) {
+                    if (twit != null && twit.contains("@" + username)) {
+                        menciones[index] = twit;
+                        index++;
+                    }
+                }
+            }
+        }
+
+        // Retornar solo las menciones no nulas
+        return reducirArreglo(menciones, index);
+    }
+
+    // Contar cuántas personas han mencionado a un usuario sin ArrayList
+    public int contarPersonasQueMencionaron(String username) {
+        String[] personasQueMencionaron = new String[100]; // Suponemos que hasta 100 personas lo han mencionado.
+        int index = 0;
+
+        for (User_info usuario : userInfo) {
+            if (usuario != null) {
+                String[] twitsUsuario = usuario.getTwitsPersonales().getTwits();
+                for (String twit : twitsUsuario) {
+                    if (twit != null && twit.contains("@" + username)) {
+                        if (!existeEnArreglo(personasQueMencionaron, usuario.getUsername())) {
+                            personasQueMencionaron[index] = usuario.getUsername();
+                            index++;
+                        }
+                    }
+                }
+            }
+        }
+
+        return index; // El índice representa la cantidad de personas que mencionaron al usuario.
     }
     
     public  User_info buscarLogged(String username, String contraseña){
@@ -115,5 +203,13 @@ if (buscar(username) != null) {
 //            }
 //        }
 //        return false;
+
+    private boolean existeEnArreglo(String[] personasQueMencionaron, String username) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String[] reducirArreglo(String[] menciones, int index) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
       
 }

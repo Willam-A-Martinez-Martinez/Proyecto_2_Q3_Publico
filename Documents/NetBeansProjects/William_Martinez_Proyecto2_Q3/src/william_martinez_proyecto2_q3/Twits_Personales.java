@@ -44,4 +44,8 @@ public class Twits_Personales {
     public Twits[] obtenerTwits() {
         return twits;
     }
+
+    String[] getTwits() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
