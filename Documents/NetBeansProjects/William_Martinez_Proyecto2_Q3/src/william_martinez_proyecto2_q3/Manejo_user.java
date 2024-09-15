@@ -5,6 +5,8 @@ public class Manejo_user {
     User_info[] userInfo;
     private final int totalUsers;
     
+    
+    
     public Manejo_user(){
         userInfo = new User_info[25];
         totalUsers=0;
@@ -18,6 +20,24 @@ public class Manejo_user {
         }
         System.out.println("Usuario no encontrado: " + username);
         return null;
+    }
+    
+    
+    public boolean agregarTwit(String username, String twit) {
+        User_info usuario = buscar(username);
+        if (usuario != null) {
+            return usuario.getTwitsPersonales().agregarTwit(twit);
+        }
+        System.out.println("Usuario no encontrado: " + username);
+        return false;
+    }
+
+    public String mostrarTwits(String username) {
+        User_info usuario = buscar(username);
+        if (usuario != null) {
+            return usuario.getTwitsPersonales().imprimirTwits();
+        }
+        return "Usuario no encontrado: " + username;
     }
     
     public  User_info buscarLogged(String username, String contraseña){

@@ -10,10 +10,9 @@ public class Pagina_Inicial extends javax.swing.JFrame {
     
     public Pagina_Inicial() {
         initComponents();
-        twits= new Twits_Generales();
-        loggedUser=new LoggedUser();
         manejoUser = new Manejo_user();
-        
+        twits= new Twits_Generales();
+        loggedUser=new LoggedUser();        
         
         this.setLocation(0, 0);
     }
@@ -166,17 +165,20 @@ public class Pagina_Inicial extends javax.swing.JFrame {
     }//GEN-LAST:event_bloqueContraTxtActionPerformed
 
     private void botonInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInicioSesionActionPerformed
-
         System.out.println(loggedUser.isLogged());
         Pagina_Multiple pgMultiple = new Pagina_Multiple(this);
         String username= bloqueUsuarioTxt.getText();
         String password= bloqueContraTxt.getText();
         System.out.println("Buscando usuario: " + username);
+        
+        //informacion agregada
         User_info user =manejoUser.buscarLogged(username, password);
         System.out.println("Usuario encontrado: " + user);
         
         System.out.println(user);
         if(user!=null ){
+            this.loggedUser.setLoggedUser(user);
+            
             pgMultiple.setVisible(true);
             this.setVisible(false);
         }

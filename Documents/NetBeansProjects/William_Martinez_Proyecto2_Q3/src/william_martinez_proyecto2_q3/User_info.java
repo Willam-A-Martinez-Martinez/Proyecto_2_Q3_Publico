@@ -1,7 +1,7 @@
 package william_martinez_proyecto2_q3;
 
 import java.time.LocalDateTime;
-
+import java.time.format.DateTimeFormatter;
 
 
 public class User_info {
@@ -25,7 +25,7 @@ public class User_info {
     private String following[];
     private int totalFollowers;
     private int totalFollowing;
-    
+    private Twits_Personales twitsPersonales;
 
     public User_info(String nombreUser, String username, String password, char generoUser, int edadUser) {
         this.nombreUser = nombreUser;
@@ -34,14 +34,25 @@ public class User_info {
         this.generoUser = generoUser;
         this.edadUser = edadUser;
         this.active = true;
-        this.fechaActual=LocalDateTime.now();
-        this.followers = new String[25];  // Máximo 100 seguidores
-        this.following = new String[25];  // Máximo 100 usuarios que sigue
+        this.fechaActual= LocalDateTime.now();
+        this.followers = new String[25];
+        this.following = new String[25];
         this.totalFollowers = 0;
         this.totalFollowing = 0;
+        this.twitsPersonales = new Twits_Personales();
     }
-   
-
+    
+    
+    
+    public String getFechaHoraFormateada() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return this.fechaActual.format(formatter);
+    }
+    
+    public Twits_Personales getTwitsPersonales() {
+        return twitsPersonales;
+    }
+    
     public String getNombreUser() {
         return nombreUser;
     }
@@ -138,7 +149,3 @@ public class User_info {
         System.out.println("Estado: " + (isActive ? "Activa" : "Desactivada"));
     }
 }
-
-    
-    
-

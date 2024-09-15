@@ -237,16 +237,24 @@ public class Pagina_Multiple extends javax.swing.JFrame {
 
 //        System.out.println(pgInicial.loggedUser.isLogged());
         String contenidoTwit= zonaEscribir.getText();
+
         System.out.println(contenidoTwit);
+        
         if(contenidoTwit.length()<=140 && contenidoTwit.length()>0){
             boolean twit = pgInicial.twits.agregarTwit(contenidoTwit);
+            pgInicial.manejoUser.agregarTwit(pgInicial.loggedUser.getLoggedUser().getNombreUser(), contenidoTwit);
+//            pgInicial.manejoUser.agregarTwit(contenidoTwit, contenidoTwit)
             System.out.println(twit);
             if (twit){
                 System.out.println(pgInicial.twits.imprimirTwits());
                 twitsTimeline.setText(pgInicial.twits.imprimirTwits());
+                zonaEscribir.setText("");
+            }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "No ingrese twits repetidos ni twits vacios.  ");
             }
         }else{
-            JOptionPane.showMessageDialog(rootPane, "Ingreso mas de 140 letras.");
+            JOptionPane.showMessageDialog(rootPane, "Ingreso mas de 140 letras o ninguna letra.");
         }
     }//GEN-LAST:event_botonEnviarTwitActionPerformed
 

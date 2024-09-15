@@ -1,50 +1,50 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package william_martinez_proyecto2_q3;
 
-/**
- *
- * @author DELL
- */
 public class Twits_Personales {
     
-        private String twits[];
-    private int contadorDeTwits;
+    private String twits[];
+    private int contadorTwits;
     
     public Twits_Personales(){
         twits = new String[20];
-        contadorDeTwits=0;
-    }
-
-    public int getContadorDeTwits() {
-        return contadorDeTwits;
+        contadorTwits=0;
     }
     
     public String buscarTwits(String twit){
-        for (int posicionTwits = 0; posicionTwits < twits.length; posicionTwits++) {
-            if(twits[posicionTwits]!=null){
-                return twit;
+        for (String twit1 : twits) {
+            if (twit1 != null && twit1.equals(twit)) {
+                return twit1;
             }
         }
         return null;
     }
-    
-    public String getTwits(){
-        for(String eph: twits){
-            if(eph!=null){
-                return eph; 
+
+    public String[] getTwits(){
+        int size = 0;
+        for (String twit : twits) {
+            if (twit != null) {
+                size++;
             }
         }
-        return null;
+        String[] result = new String[size];
+        int index = 0;
+        for (String twit : twits) {
+            if (twit != null) {
+                result[index++] = twit;
+            }
+        }
+        return result;
     }
 
     public boolean agregarTwit(String twit){
         String busquedaTwit = buscarTwits(twit);
+        if(contadorTwits>=twits.length){
+            return false;
+        }
+        
         if(busquedaTwit==null){
-            twits[contadorDeTwits]=twit;
-            contadorDeTwits++;
+            twits[contadorTwits]=twit;
+            contadorTwits++;
             return true;
         }
         
@@ -54,12 +54,16 @@ public class Twits_Personales {
     
     public String imprimirTwits(){
         String twitPrint = "";
-        for(int i = 0 ; i<twits.length; i++){
-            if(twits[i]!=null){
-                twitPrint+=twits[i];
+        for (String twit : twits) {
+            if (twit != null) {
+                twitPrint += twit+"\n";
             }
         }
         return twitPrint;
+    }
+    
+    public String[] obtenerTwits() {
+        return twits;
     }
 
     

@@ -269,10 +269,15 @@ public class Pagina_Registro extends javax.swing.JFrame {
 
         User_info usuario= pgInicial.manejoUser.buscar(username);
         
-        
-        
         if(usuario == null && edadInt>0 && edadInt<100 && (generoChar=='M' || generoChar=='F') && contra.equalsIgnoreCase(contraConfirm)){
             pgInicial.manejoUser.crearUsuario(username, nombre, contra, generoChar, edadInt);
+            
+            User_info user =pgInicial.manejoUser.buscarLogged(username, contra);
+            
+            pgInicial.loggedUser.setLoggedUser(user);
+            
+            System.out.println("Usuario logeado: "+pgInicial.loggedUser.getLoggedUser().getNombreUser());
+            
             pgMultiple.setVisible(true);
             this.setVisible(false);
         }
