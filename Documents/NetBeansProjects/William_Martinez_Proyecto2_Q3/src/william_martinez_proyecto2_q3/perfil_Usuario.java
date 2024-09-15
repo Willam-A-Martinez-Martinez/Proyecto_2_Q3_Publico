@@ -96,13 +96,13 @@ public class perfil_Usuario extends javax.swing.JPanel {
         BackHome.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
 
         name.setText("Nombre:");
-        BackHome.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        BackHome.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         Username.setText("UserN:");
-        BackHome.add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        BackHome.add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         Age.setText("Edad:");
-        BackHome.add(Age, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        BackHome.add(Age, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         jLabel6.setText("Tweet's");
         BackHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 70, -1, -1));
@@ -158,7 +158,7 @@ public class perfil_Usuario extends javax.swing.JPanel {
                 tweetfieldActionPerformed(evt);
             }
         });
-        BackHome.add(tweetfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 214, 580, 240));
+        BackHome.add(tweetfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 174, 530, 280));
 
         Followbutton.setText("Seguir");
         Followbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +166,7 @@ public class perfil_Usuario extends javax.swing.JPanel {
                 FollowbuttonActionPerformed(evt);
             }
         });
-        BackHome.add(Followbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 100, 20));
+        BackHome.add(Followbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 100, 20));
 
         add(BackHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 470));
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
