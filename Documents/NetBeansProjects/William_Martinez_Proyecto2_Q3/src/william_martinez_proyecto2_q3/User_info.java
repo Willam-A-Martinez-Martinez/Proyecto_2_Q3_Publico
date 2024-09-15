@@ -26,6 +26,7 @@ public class User_info {
     private int totalFollowers;
     private int totalFollowing;
     private Twits_Personales twitsPersonales;
+    private Following followingObj;
 
     public User_info(String nombreUser, String username, String password, char generoUser, int edadUser) {
         this.nombreUser = nombreUser;
@@ -40,6 +41,7 @@ public class User_info {
         this.totalFollowers = 0;
         this.totalFollowing = 0;
         this.twitsPersonales = new Twits_Personales();
+        this.followingObj= new Following();
     }
     
     
@@ -104,7 +106,11 @@ public class User_info {
     public void desactivarCuenta() {
         this.active = false;
     }
-
+       
+    public String[] getFollowing() {
+    return followingObj.getFollowingList(); // Asumiendo que twitsPersonales tiene el objeto Following
+    }
+    
     public LocalDateTime getFechaActual() {
         return fechaActual;
     }

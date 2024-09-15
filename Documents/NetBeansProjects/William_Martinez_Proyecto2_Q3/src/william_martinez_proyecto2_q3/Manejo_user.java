@@ -26,7 +26,7 @@ public class Manejo_user {
     public boolean agregarTwit(String username, String twit) {
         User_info usuario = buscar(username);
         if (usuario != null) {
-            return usuario.getTwitsPersonales().agregarTwit(twit);
+            return usuario.getTwitsPersonales().agregarTwit(twit, username);
         }
         System.out.println("Usuario no encontrado: " + username);
         return false;
