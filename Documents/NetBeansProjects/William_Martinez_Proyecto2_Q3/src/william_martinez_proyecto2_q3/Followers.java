@@ -1,6 +1,10 @@
 package william_martinez_proyecto2_q3;
 
 public class Followers {
+
+    static String getText() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 
     private String[] followers;
@@ -9,6 +13,14 @@ public class Followers {
     public Followers() {
         this.followers= new String[25]; 
         this.followerCount=0;
+    }
+    
+    public int getFollowersCount() {
+        return followerCount;
+    }
+    
+    public void addFollower() {
+        followerCount++;
     }
 
     public void addFollower(String username) {

@@ -308,4 +308,8 @@ public class Pagina_Multiple extends javax.swing.JFrame {
     private javax.swing.JTextArea twitsTimeline;
     private javax.swing.JTextField zonaEscribir;
     // End of variables declaration//GEN-END:variables
+
+    void mostrarPantalla(String paginaInicial) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

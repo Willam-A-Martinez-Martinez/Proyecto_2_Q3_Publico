@@ -5,6 +5,10 @@ import java.time.format.DateTimeFormatter;
 
 
 public class User_info {
+
+    static boolean Followers(String usernameFollower) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     /*
     Para poder crear una cuenta se debe tener los siguientes datos antes (FORMATO EN CLASE PROPUESTO):
 - Nombre del usuario (STRING)

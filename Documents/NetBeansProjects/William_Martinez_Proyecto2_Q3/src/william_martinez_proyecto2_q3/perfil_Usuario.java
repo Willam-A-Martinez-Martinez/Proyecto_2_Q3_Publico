@@ -5,18 +5,39 @@
 package william_martinez_proyecto2_q3;
 
 import java.awt.Dimension;
-
+import java.awt.event.ActionEvent;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author DELL
  */
-public class PgEditar_perfil extends javax.swing.JPanel {
+public class perfil_Usuario extends javax.swing.JPanel {
 
     Pagina_Inicial pgInicial;
+    private Followers followers;
+    private Following following;
+    private DefaultListModel<String> tweetModel;
+    private String String;
+    private String usernameFollower;
     
-    public PgEditar_perfil(Pagina_Inicial pgInicial) {
+    public perfil_Usuario(Pagina_Inicial pgInicial) {
         initComponents();
         setPreferredSize(new Dimension(770, 560));
+         this.pgInicial = pgInicial;
+        this.followers = new Followers();  // Crear instancia de Followers
+        this.following = new Following();  // Crear instancia de Following
+        this.tweetModel = new DefaultListModel<>();
+        
+       
+        updateCounts();  // Actualizar contadores iniciales
+    }
+    
+      private void updateCounts() {
+        followerscount.setText(String.valueOf(followers.getFollowersCount()));
+        followingcount.setText(String.valueOf(following.getFollowingCount()));
+        tweetcount.setText(String.valueOf(tweetModel.size()));
     }
 
     /**
@@ -32,20 +53,21 @@ public class PgEditar_perfil extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         BackHome = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        Backhomebtt = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        name = new javax.swing.JLabel();
+        Username = new javax.swing.JLabel();
+        Age = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        textField1 = new java.awt.TextField();
-        textField2 = new java.awt.TextField();
-        textField4 = new java.awt.TextField();
-        jTextField1 = new javax.swing.JTextField();
+        editbotton = new javax.swing.JButton();
+        followingcount = new java.awt.TextField();
+        followerscount = new java.awt.TextField();
+        tweetcount = new java.awt.TextField();
+        tweetfield = new javax.swing.JTextField();
+        Followbutton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
@@ -60,22 +82,27 @@ public class PgEditar_perfil extends javax.swing.JPanel {
         BackHome.setBackground(new java.awt.Color(198, 198, 252));
         BackHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(153, 51, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 0, 0));
-        jButton1.setText("Home");
-        BackHome.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 20));
+        Backhomebtt.setBackground(new java.awt.Color(153, 51, 255));
+        Backhomebtt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Backhomebtt.setForeground(new java.awt.Color(51, 0, 0));
+        Backhomebtt.setText("Home");
+        Backhomebtt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackhomebttActionPerformed(evt);
+            }
+        });
+        BackHome.add(Backhomebtt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 20));
         BackHome.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
         BackHome.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
 
-        jLabel2.setText("Nombre:");
-        BackHome.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 144, -1, -1));
+        name.setText("Nombre:");
+        BackHome.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
-        jLabel3.setText("UserN:");
-        BackHome.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 167, -1, -1));
+        Username.setText("UserN:");
+        BackHome.add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        jLabel5.setText("Edad:");
-        BackHome.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 189, -1, -1));
+        Age.setText("Edad:");
+        BackHome.add(Age, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         jLabel6.setText("Tweet's");
         BackHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 70, -1, -1));
@@ -86,87 +113,132 @@ public class PgEditar_perfil extends javax.swing.JPanel {
         jLabel8.setText("Siguiendo:");
         BackHome.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 70, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setText("Editar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        editbotton.setBackground(new java.awt.Color(204, 204, 204));
+        editbotton.setText("Editar");
+        editbotton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                editbottonActionPerformed(evt);
             }
         });
-        BackHome.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, 16));
+        BackHome.add(editbotton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, 16));
 
-        textField1.setBackground(new java.awt.Color(204, 204, 255));
-        textField1.setName(""); // NOI18N
-        textField1.setText("textField1");
-        textField1.addActionListener(new java.awt.event.ActionListener() {
+        followingcount.setBackground(new java.awt.Color(204, 204, 255));
+        followingcount.setName(""); // NOI18N
+        followingcount.setText("textField1");
+        followingcount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField1ActionPerformed(evt);
+                followingcountActionPerformed(evt);
             }
         });
-        BackHome.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(526, 70, 20, -1));
+        BackHome.add(followingcount, new org.netbeans.lib.awtextra.AbsoluteConstraints(526, 70, 20, -1));
 
-        textField2.setBackground(new java.awt.Color(204, 204, 255));
-        textField2.setName(""); // NOI18N
-        textField2.setText("textField1");
-        textField2.addActionListener(new java.awt.event.ActionListener() {
+        followerscount.setBackground(new java.awt.Color(204, 204, 255));
+        followerscount.setName(""); // NOI18N
+        followerscount.setText("textField1");
+        followerscount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField2ActionPerformed(evt);
+                followerscountActionPerformed(evt);
             }
         });
-        BackHome.add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(426, 70, 20, -1));
+        BackHome.add(followerscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(426, 70, 20, -1));
 
-        textField4.setBackground(new java.awt.Color(204, 204, 255));
-        textField4.setName(""); // NOI18N
-        textField4.setText("textField1");
-        textField4.addActionListener(new java.awt.event.ActionListener() {
+        tweetcount.setBackground(new java.awt.Color(204, 204, 255));
+        tweetcount.setName(""); // NOI18N
+        tweetcount.setText("textField1");
+        tweetcount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField4ActionPerformed(evt);
+                tweetcountActionPerformed(evt);
             }
         });
-        BackHome.add(textField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 70, 20, -1));
+        BackHome.add(tweetcount, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 70, 20, -1));
 
-        jTextField1.setBackground(new java.awt.Color(217, 204, 252));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        tweetfield.setBackground(new java.awt.Color(217, 204, 252));
+        tweetfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                tweetfieldActionPerformed(evt);
             }
         });
-        BackHome.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 223, 291, 241));
+        BackHome.add(tweetfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 214, 580, 240));
+
+        Followbutton.setText("Seguir");
+        Followbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FollowbuttonActionPerformed(evt);
+            }
+        });
+        BackHome.add(Followbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 100, 20));
 
         add(BackHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 470));
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
+    private void followingcountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_followingcountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField1ActionPerformed
+          // Supongamos que tienes un objeto de perfil de usuario con el número de seguidores
+        String[] followingtotal = following.getFollowingList(); // Método que obtienes de tu modelo
+    JOptionPane.showMessageDialog(this, "Número de cuentas que sigues: " +followingtotal);
+    }//GEN-LAST:event_followingcountActionPerformed
 
-    private void textField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField2ActionPerformed
+    private void followerscountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_followerscountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField2ActionPerformed
+           // Supongamos que tienes un objeto de perfil de usuario con el número de seguidores
+    int followersCount = followers.getFollowersCount(); // Método que obtienes de tu modelo
+    JOptionPane.showMessageDialog(this, "Número de seguidores: " + followersCount);
+    }//GEN-LAST:event_followerscountActionPerformed
 
-    private void textField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField4ActionPerformed
+    private void tweetcountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tweetcountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField4ActionPerformed
+      
+    }//GEN-LAST:event_tweetcountActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void tweetfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tweetfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        
+    }//GEN-LAST:event_tweetfieldActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void editbottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbottonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+     
+    }//GEN-LAST:event_editbottonActionPerformed
+
+    private void FollowbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FollowbuttonActionPerformed
+        // TODO add your handling code here:
+        // Obtén el nombre de usuario a seguir
+    String usernameToFollow = Followers.getText();
+    
+    if (usernameToFollow.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El nombre de usuario no puede estar vacío.");
+        return;
+    }
+    
+    // Aquí deberías tener un método en tu modelo para seguir a un usuario
+    boolean success = User_info.Followers(usernameFollower);
+    
+    if (success) {
+        JOptionPane.showMessageDialog(this, "Ahora sigues a " + usernameToFollow);
+    } else {
+        JOptionPane.showMessageDialog(this, "No se pudo seguir a " + usernameToFollow);
+    }
+    }//GEN-LAST:event_FollowbuttonActionPerformed
+
+    private void BackhomebttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackhomebttActionPerformed
+        // TODO add your handling code here:
+          Pagina_Multiple parentFrame = (Pagina_Multiple) SwingUtilities.getWindowAncestor(this);
+    parentFrame.mostrarPantalla("Pagina-Inicial");
+    }//GEN-LAST:event_BackhomebttActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Age;
     private javax.swing.JPanel BackHome;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Backhomebtt;
+    private javax.swing.JButton Followbutton;
+    private javax.swing.JLabel Username;
+    private javax.swing.JButton editbotton;
+    private java.awt.TextField followerscount;
+    private java.awt.TextField followingcount;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -174,9 +246,12 @@ public class PgEditar_perfil extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private java.awt.TextField textField1;
-    private java.awt.TextField textField2;
-    private java.awt.TextField textField4;
+    private javax.swing.JLabel name;
+    private java.awt.TextField tweetcount;
+    private javax.swing.JTextField tweetfield;
     // End of variables declaration//GEN-END:variables
+
+    void mostrarPantalla(String perfilUsuario) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
