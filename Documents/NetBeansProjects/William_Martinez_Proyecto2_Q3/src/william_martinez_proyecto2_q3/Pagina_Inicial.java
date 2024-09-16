@@ -20,6 +20,14 @@ public class Pagina_Inicial extends javax.swing.JFrame {
         this.setLocation(0, 0);
     }
 
+    public void saveLoggedUser(User_info user) {
+        loggedUser.setLoggedUser(user); 
+    }
+    
+    
+    public User_info getLoggedUser() {
+        return loggedUser.getLoggedUser();
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -175,12 +183,12 @@ public class Pagina_Inicial extends javax.swing.JFrame {
         System.out.println("Buscando usuario: " + username);
         
         //informacion agregada
-        User_info user =manejoUser.buscarLogged(username, password);
+        User_info user =manejoUser.buscar(username);
         System.out.println("Usuario encontrado: " + user);
         
         System.out.println(user);
         if(user!=null ){
-            this.loggedUser.setLoggedUser(user);
+            this.saveLoggedUser(user);
             
             pgMultiple.setVisible(true);
             this.setVisible(false);

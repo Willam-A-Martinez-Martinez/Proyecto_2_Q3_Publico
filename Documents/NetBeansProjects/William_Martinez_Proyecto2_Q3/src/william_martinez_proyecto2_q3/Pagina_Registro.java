@@ -5,12 +5,10 @@ import javax.swing.JOptionPane;
 public class Pagina_Registro extends javax.swing.JFrame {
     
     Pagina_Inicial pgInicial;
-    LoggedUser loggedUser;
     
     public Pagina_Registro(Pagina_Inicial pgInicial) {
         initComponents();
         this.pgInicial = pgInicial;
-        this.loggedUser= new LoggedUser();
         this.setLocation(0, 0);
     }
     
@@ -273,13 +271,12 @@ public class Pagina_Registro extends javax.swing.JFrame {
         
         if(usuario == null && edadInt>0 && edadInt<100 && (generoChar=='M' || generoChar=='F') && contra.equalsIgnoreCase(contraConfirm)){
             pgInicial.manejoUser.crearUsuario(username, nombre, edadStr, generoChar, edadInt);
-            
-            User_info user =pgInicial.manejoUser.buscarLogged(username, contra);
-            
-            loggedUser.setLoggedUser(user);
+            User_info user =pgInicial.manejoUser.buscarUsuario(username);
             
             
+            pgInicial.saveLoggedUser(user);
             
+            pgInicial.manejoUser.mostrarUsuarios();
             pgMultiple.setVisible(true);
             this.setVisible(false);
         }

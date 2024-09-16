@@ -1,13 +1,10 @@
 package william_martinez_proyecto2_q3;
 
-import java.awt.Dimension;
-import javax.swing.JPanel;
+
 import javax.swing.JOptionPane;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
+
 
 public class Pagina_Multiple extends javax.swing.JFrame {
-    private static final int MAX_CHAR_PER_LINE = 40;
     Pagina_Inicial pgInicial;
     
     
@@ -16,33 +13,7 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         this.pgInicial = pgInicial;
         this.setLocation(0, 0);
         
-        zonaEscribir.addKeyListener(new KeyListener() {
-            public void keyTyped(KeyEvent e) {
-                // No hacemos nada aquí
-            }
-
-            public void keyPressed(KeyEvent e) {
-                // No hacemos nada aquí
-            }
-
-            public void keyReleased(KeyEvent e) {
-                String[] lines = zonaEscribir.getText().split("\n");
-                StringBuilder limitedText = new StringBuilder();
-
-                for (String line : lines) {
-                    // Divide la línea en partes del tamaño máximo permitido
-                    while (line.length() > MAX_CHAR_PER_LINE) {
-                        limitedText.append(line.substring(0, MAX_CHAR_PER_LINE)).append("\n");
-                        line = line.substring(MAX_CHAR_PER_LINE);
-                    }
-                    limitedText.append(line).append("\n"); // Agrega la línea restante
-                }
-
-                // Establece el texto limitado de nuevo en el JTextArea
-                zonaEscribir.setText(limitedText.toString().trim());
-                zonaEscribir.setCaretPosition(zonaEscribir.getText().length()); // Mantiene el cursor al final
-            }
-        });
+        
     
 //        System.out.println("Estado de loggedUser antes de obtener el usuario: " + pgInicial.loggedUser);
 //        User_info user = pgInicial.loggedUser.getLoggedUser();
