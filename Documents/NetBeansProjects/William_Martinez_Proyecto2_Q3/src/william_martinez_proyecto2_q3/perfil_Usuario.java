@@ -18,7 +18,7 @@ public class perfil_Usuario extends javax.swing.JPanel {
     Pagina_Inicial pgInicial;
     private Followers followers;
     private Following following;
-    private DefaultListModel<String> tweetModel;
+    private DefaultListModel<String>tweetModel;
     private String String;
     private String usernameFollower;
     
@@ -177,6 +177,7 @@ public class perfil_Usuario extends javax.swing.JPanel {
           // Supongamos que tienes un objeto de perfil de usuario con el número de seguidores
         String[] followingtotal = following.getFollowingList(); // Método que obtienes de tu modelo
     JOptionPane.showMessageDialog(this, "Número de cuentas que sigues: " +followingtotal);
+    followingcount.setText(String.valueOf(following.getFollowingCount()));
     }//GEN-LAST:event_followingcountActionPerformed
 
     private void followerscountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_followerscountActionPerformed
@@ -184,27 +185,50 @@ public class perfil_Usuario extends javax.swing.JPanel {
            // Supongamos que tienes un objeto de perfil de usuario con el número de seguidores
     int followersCount = followers.getFollowersCount(); // Método que obtienes de tu modelo
     JOptionPane.showMessageDialog(this, "Número de seguidores: " + followersCount);
+    followerscount.setText(String.valueOf(followers.getFollowersCount()));
     }//GEN-LAST:event_followerscountActionPerformed
 
     private void tweetcountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tweetcountActionPerformed
         // TODO add your handling code here:
-      
+      tweetcount.setText(String.valueOf(tweetModel.size()));
     }//GEN-LAST:event_tweetcountActionPerformed
 
     private void tweetfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tweetfieldActionPerformed
         // TODO add your handling code here:
-        
+        String tweet = tweetfield.getText();  // Obtener el texto del tweet
+        tweetModel.addElement(tweet);  // Añadir el tweet al modelo
+        updateCounts();  // Actualizar los contadores de tweets
     }//GEN-LAST:event_tweetfieldActionPerformed
 
     private void editbottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbottonActionPerformed
         // TODO add your handling code here:
-     
+      String nuevoNombre = JOptionPane.showInputDialog(this, "Ingrese su nuevo nombre:", name.getText());
+    String nuevoUsername = JOptionPane.showInputDialog(this, "Ingrese su nuevo nombre de usuario:", Username.getText());
+    String nuevaEdad = JOptionPane.showInputDialog(this, "Ingrese su nueva edad:", Age.getText());
+
+    // Validar que los campos no estén vacíos
+    if (nuevoNombre != null && !nuevoNombre.trim().isEmpty()) {
+        name.setText(nuevoNombre);
+    }
+    
+    if (nuevoUsername != null && !nuevoUsername.trim().isEmpty()) {
+        Username.setText(nuevoUsername);
+    }
+    
+    if (nuevaEdad != null && !nuevaEdad.trim().isEmpty()) {
+        try {
+            int edad = Integer.parseInt(nuevaEdad);
+            Age.setText(String.valueOf(edad));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Edad no válida, por favor ingrese un número.");
+        }
+    }
     }//GEN-LAST:event_editbottonActionPerformed
 
     private void FollowbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FollowbuttonActionPerformed
         // TODO add your handling code here:
         // Obtén el nombre de usuario a seguir
-    String usernameToFollow = Followers.getText();
+  String usernameToFollow = usernameFollower;  // Asegúrate de obtener el valor correctamente
     
     if (usernameToFollow.trim().isEmpty()) {
         JOptionPane.showMessageDialog(this, "El nombre de usuario no puede estar vacío.");
@@ -212,7 +236,7 @@ public class perfil_Usuario extends javax.swing.JPanel {
     }
     
     // Aquí deberías tener un método en tu modelo para seguir a un usuario
-    boolean success = User_info.Followers(usernameFollower);
+    boolean success = followers.followUser(usernameToFollow);
     
     if (success) {
         JOptionPane.showMessageDialog(this, "Ahora sigues a " + usernameToFollow);
@@ -223,8 +247,8 @@ public class perfil_Usuario extends javax.swing.JPanel {
 
     private void BackhomebttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackhomebttActionPerformed
         // TODO add your handling code here:
-          Pagina_Multiple parentFrame = (Pagina_Multiple) SwingUtilities.getWindowAncestor(this);
-    parentFrame.mostrarPantalla("Pagina-Inicial");
+       Pagina_Multiple parentFrame = (Pagina_Multiple) SwingUtilities.getWindowAncestor(this);
+       parentFrame.mostrarPantalla("Pagina-Inicial");
     }//GEN-LAST:event_BackhomebttActionPerformed
 
 

@@ -87,11 +87,11 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        Menciones = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        HashtagtrendingView = new javax.swing.JTextArea();
         buscarMenciones = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        Hashtag = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         zonaEscribir = new javax.swing.JTextArea();
         pgBotonPerfil = new javax.swing.JButton();
@@ -144,7 +144,6 @@ public class Pagina_Multiple extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(219, 219, 255));
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("En que estas pensando?");
 
         twitsTimeline.setEditable(false);
@@ -152,7 +151,6 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         twitsTimeline.setRows(5);
         jScrollPane1.setViewportView(twitsTimeline);
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Twits");
 
         botonEnviarTwit.setText("Enviar twit");
@@ -162,25 +160,39 @@ public class Pagina_Multiple extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Buscar menciones: ");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Buscar Hashtags:");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        Menciones.setEditable(false);
+        Menciones.setColumns(20);
+        Menciones.setRows(5);
+        Menciones.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                MencionesComponentAdded(evt);
+            }
+        });
+        jScrollPane2.setViewportView(Menciones);
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        HashtagtrendingView.setEditable(false);
+        HashtagtrendingView.setColumns(20);
+        HashtagtrendingView.setRows(5);
+        HashtagtrendingView.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                HashtagtrendingViewComponentAdded(evt);
+            }
+        });
+        jScrollPane3.setViewportView(HashtagtrendingView);
 
         buscarMenciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarMencionesActionPerformed(evt);
+            }
+        });
+
+        Hashtag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HashtagActionPerformed(evt);
             }
         });
 
@@ -217,7 +229,7 @@ public class Pagina_Multiple extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
                     .addComponent(jScrollPane3)
                     .addComponent(buscarMenciones)
-                    .addComponent(jTextField3))
+                    .addComponent(Hashtag))
                 .addGap(23, 23, 23))
         );
         jPanel5Layout.setVerticalGroup(
@@ -235,7 +247,7 @@ public class Pagina_Multiple extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Hashtag, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
@@ -304,6 +316,7 @@ public class Pagina_Multiple extends javax.swing.JFrame {
 
     private void botonPgEditar_PerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPgEditar_PerfilActionPerformed
 
+        
     }//GEN-LAST:event_botonPgEditar_PerfilActionPerformed
 
     private void botonEnviarTwitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEnviarTwitActionPerformed
@@ -344,14 +357,68 @@ public class Pagina_Multiple extends javax.swing.JFrame {
     }//GEN-LAST:event_pgBotonPerfilActionPerformed
 
     private void buscarMencionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMencionesActionPerformed
-        String username= buscarMenciones.getText();
-        
-        pgInicial.manejoUser.buscarMenciones(username);
-        
-        
+        String username = buscarMenciones.getText();
+    
+    // Llamada al método para buscar menciones
+    String[] menciones = pgInicial.manejoUser.buscarMenciones(username);
+    
+    // Mostrar el resultado en un componente adecuado (por ejemplo, un JTextArea o JLabel)
+    StringBuilder resultado = new StringBuilder("Menciones encontradas:\n");
+    for (String mencion : menciones) {
+        if (mencion != null) {
+            resultado.append(mencion).append("\n");
+        }
+    }
+    
+    // Supongamos que tienes un JTextArea para mostrar las menciones
+    Menciones.setText(resultado.toString());
     }//GEN-LAST:event_buscarMencionesActionPerformed
 
+    private void MencionesComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_MencionesComponentAdded
+        // TODO add your handling code here:
+        // Podrías cargar datos de menciones o actualizar la vista cuando el componente se añada
+    String username = buscarMenciones.getText();
+    if (!username.isEmpty()) {
+        String[] menciones = pgInicial.manejoUser.buscarMenciones(username);
+        StringBuilder resultado = new StringBuilder("Menciones encontradas:\n");
+        for (String mencion : menciones) {
+            if (mencion != null) {
+                resultado.append(mencion).append("\n");
+            }
+          Menciones.setText(resultado.toString());
+        }
+    }
+    }//GEN-LAST:event_MencionesComponentAdded
+
+    private void HashtagtrendingViewComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_HashtagtrendingViewComponentAdded
+        // TODO add your handling code here:
+         // Podrías mostrar los hashtags en tendencia cuando el componente se añada
+    pgInicial.manejoUser.mostrarTrendingHashtags();
+    }//GEN-LAST:event_HashtagtrendingViewComponentAdded
+
+    private void HashtagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HashtagActionPerformed
+        // TODO add your handling code here:
+         String hashtag = Hashtag.getText();
+    
+    // Buscar tweets por hashtag
+    String[] twitsConHashtag = pgInicial.manejoUser.buscarTwitsPorHashtag(hashtag);
+    
+    // Mostrar los tweets en un componente adecuado (por ejemplo, un JTextArea o JLabel)
+    StringBuilder resultado = new StringBuilder("Tweets con el hashtag ").append(hashtag).append(":\n");
+    for (String twit : twitsConHashtag) {
+        if (twit != null) {
+            resultado.append(twit).append("\n");
+        }
+    }
+    
+    // Supongamos que tienes un JTextArea para mostrar los tweets
+    HashtagtrendingView.setText(resultado.toString());
+    }//GEN-LAST:event_HashtagActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Hashtag;
+    private javax.swing.JTextArea HashtagtrendingView;
+    private javax.swing.JTextArea Menciones;
     private javax.swing.JLabel TituloTxt;
     private javax.swing.JPanel background;
     private javax.swing.JButton botonEnviarTwit;
@@ -371,9 +438,6 @@ public class Pagina_Multiple extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton pgBotonPerfil;
     private javax.swing.JTextArea twitsTimeline;
     private javax.swing.JTextArea zonaEscribir;
