@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package william_martinez_proyecto2_q3;
 
@@ -9,11 +9,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-/**
- *
- * @author DELL
- */
-public class perfil_Usuario extends javax.swing.JPanel {
+
+
+public class pgPerfil_Usuario extends javax.swing.JFrame {
 
     Pagina_Inicial pgInicial;
     private Followers followers;
@@ -22,7 +20,7 @@ public class perfil_Usuario extends javax.swing.JPanel {
     private String String;
     private String usernameFollower;
     
-    public perfil_Usuario(Pagina_Inicial pgInicial) {
+    public pgPerfil_Usuario(Pagina_Inicial pgInicial) {
         initComponents();
         setPreferredSize(new Dimension(770, 560));
          this.pgInicial = pgInicial;
@@ -49,9 +47,6 @@ public class perfil_Usuario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         BackHome = new javax.swing.JPanel();
         Backhomebtt = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -68,16 +63,8 @@ public class perfil_Usuario extends javax.swing.JPanel {
         tweetcount = new java.awt.TextField();
         tweetfield = new javax.swing.JTextField();
         Followbutton = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
-
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         BackHome.setBackground(new java.awt.Color(198, 198, 252));
         BackHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -168,29 +155,81 @@ public class perfil_Usuario extends javax.swing.JPanel {
         });
         BackHome.add(Followbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 100, 20));
 
-        add(BackHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 470));
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(BackHome, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 470, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(BackHome, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BackhomebttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackhomebttActionPerformed
+        // TODO add your handling code here:
+        Pagina_Multiple pgMultiple = new Pagina_Multiple(pgInicial);
+        pgMultiple.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BackhomebttActionPerformed
+
+    private void editbottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbottonActionPerformed
+        // TODO add your handling code here:
+        String nuevoNombre = JOptionPane.showInputDialog(this, "Ingrese su nuevo nombre:", name.getText());
+        String nuevoUsername = JOptionPane.showInputDialog(this, "Ingrese su nuevo nombre de usuario:", Username.getText());
+        String nuevaEdad = JOptionPane.showInputDialog(this, "Ingrese su nueva edad:", Age.getText());
+
+        // Validar que los campos no estén vacíos
+        if (nuevoNombre != null && !nuevoNombre.trim().isEmpty()) {
+            name.setText(nuevoNombre);
+        }
+
+        if (nuevoUsername != null && !nuevoUsername.trim().isEmpty()) {
+            Username.setText(nuevoUsername);
+        }
+
+        if (nuevaEdad != null && !nuevaEdad.trim().isEmpty()) {
+            try {
+                int edad = Integer.parseInt(nuevaEdad);
+                Age.setText(String.valueOf(edad));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Edad no válida, por favor ingrese un número.");
+            }
+        }
+    }//GEN-LAST:event_editbottonActionPerformed
 
     private void followingcountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_followingcountActionPerformed
         // TODO add your handling code here:
-          // Supongamos que tienes un objeto de perfil de usuario con el número de seguidores
+        // Supongamos que tienes un objeto de perfil de usuario con el número de seguidores
         String[] followingtotal = following.getFollowingList(); // Método que obtienes de tu modelo
-    JOptionPane.showMessageDialog(this, "Número de cuentas que sigues: " +followingtotal);
-    followingcount.setText(String.valueOf(following.getFollowingCount()));
+        JOptionPane.showMessageDialog(this, "Número de cuentas que sigues: " +followingtotal);
+        followingcount.setText(String.valueOf(following.getFollowingCount()));
     }//GEN-LAST:event_followingcountActionPerformed
 
     private void followerscountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_followerscountActionPerformed
         // TODO add your handling code here:
-           // Supongamos que tienes un objeto de perfil de usuario con el número de seguidores
-    int followersCount = followers.getFollowersCount(); // Método que obtienes de tu modelo
-    JOptionPane.showMessageDialog(this, "Número de seguidores: " + followersCount);
-    followerscount.setText(String.valueOf(followers.getFollowersCount()));
+        // Supongamos que tienes un objeto de perfil de usuario con el número de seguidores
+        int followersCount = followers.getFollowersCount(); // Método que obtienes de tu modelo
+        JOptionPane.showMessageDialog(this, "Número de seguidores: " + followersCount);
+        followerscount.setText(String.valueOf(followers.getFollowersCount()));
     }//GEN-LAST:event_followerscountActionPerformed
 
     private void tweetcountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tweetcountActionPerformed
         // TODO add your handling code here:
-      tweetcount.setText(String.valueOf(tweetModel.size()));
+        tweetcount.setText(String.valueOf(tweetModel.size()));
     }//GEN-LAST:event_tweetcountActionPerformed
 
     private void tweetfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tweetfieldActionPerformed
@@ -200,57 +239,29 @@ public class perfil_Usuario extends javax.swing.JPanel {
         updateCounts();  // Actualizar los contadores de tweets
     }//GEN-LAST:event_tweetfieldActionPerformed
 
-    private void editbottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbottonActionPerformed
-        // TODO add your handling code here:
-      String nuevoNombre = JOptionPane.showInputDialog(this, "Ingrese su nuevo nombre:", name.getText());
-    String nuevoUsername = JOptionPane.showInputDialog(this, "Ingrese su nuevo nombre de usuario:", Username.getText());
-    String nuevaEdad = JOptionPane.showInputDialog(this, "Ingrese su nueva edad:", Age.getText());
-
-    // Validar que los campos no estén vacíos
-    if (nuevoNombre != null && !nuevoNombre.trim().isEmpty()) {
-        name.setText(nuevoNombre);
-    }
-    
-    if (nuevoUsername != null && !nuevoUsername.trim().isEmpty()) {
-        Username.setText(nuevoUsername);
-    }
-    
-    if (nuevaEdad != null && !nuevaEdad.trim().isEmpty()) {
-        try {
-            int edad = Integer.parseInt(nuevaEdad);
-            Age.setText(String.valueOf(edad));
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Edad no válida, por favor ingrese un número.");
-        }
-    }
-    }//GEN-LAST:event_editbottonActionPerformed
-
     private void FollowbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FollowbuttonActionPerformed
         // TODO add your handling code here:
         // Obtén el nombre de usuario a seguir
-  String usernameToFollow = usernameFollower;  // Asegúrate de obtener el valor correctamente
-    
-    if (usernameToFollow.trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "El nombre de usuario no puede estar vacío.");
-        return;
-    }
-    
-    // Aquí deberías tener un método en tu modelo para seguir a un usuario
-    boolean success = followers.followUser(usernameToFollow);
-    
-    if (success) {
-        JOptionPane.showMessageDialog(this, "Ahora sigues a " + usernameToFollow);
-    } else {
-        JOptionPane.showMessageDialog(this, "No se pudo seguir a " + usernameToFollow);
-    }
+        String usernameToFollow = usernameFollower;  // Asegúrate de obtener el valor correctamente
+
+        if (usernameToFollow.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El nombre de usuario no puede estar vacío.");
+            return;
+        }
+
+        // Aquí deberías tener un método en tu modelo para seguir a un usuario
+        boolean success = followers.followUser(usernameToFollow);
+
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Ahora sigues a " + usernameToFollow);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo seguir a " + usernameToFollow);
+        }
     }//GEN-LAST:event_FollowbuttonActionPerformed
 
-    private void BackhomebttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackhomebttActionPerformed
-        // TODO add your handling code here:
-       Pagina_Multiple parentFrame = (Pagina_Multiple) SwingUtilities.getWindowAncestor(this);
-       parentFrame.mostrarPantalla("Pagina-Inicial");
-    }//GEN-LAST:event_BackhomebttActionPerformed
-
+    /**
+     * @param args the command line arguments
+     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Age;
@@ -266,16 +277,8 @@ public class perfil_Usuario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel name;
     private java.awt.TextField tweetcount;
     private javax.swing.JTextField tweetfield;
     // End of variables declaration//GEN-END:variables
-
-    void mostrarPantalla(String perfilUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
