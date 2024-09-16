@@ -45,7 +45,6 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         cajaPaneles = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         TituloTxt = new javax.swing.JLabel();
-        botonPgEditar_Perfil = new javax.swing.JButton();
         botonPgCerrarSesion = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -62,6 +61,7 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         zonaEscribir = new javax.swing.JTextField();
+        pgBotonPerfil = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -95,19 +95,6 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         TituloTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TituloTxt.setText("SWITCH");
         jPanel4.add(TituloTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 12, 150, 39));
-
-        botonPgEditar_Perfil.setBackground(new java.awt.Color(51, 51, 51));
-        botonPgEditar_Perfil.setFont(new java.awt.Font("Roboto Black", 0, 11)); // NOI18N
-        botonPgEditar_Perfil.setText("Editar perfil");
-        botonPgEditar_Perfil.setBorderPainted(false);
-        botonPgEditar_Perfil.setContentAreaFilled(false);
-        botonPgEditar_Perfil.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        botonPgEditar_Perfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonPgEditar_PerfilActionPerformed(evt);
-            }
-        });
-        jPanel4.add(botonPgEditar_Perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 150, -1));
 
         botonPgCerrarSesion.setBackground(new java.awt.Color(51, 51, 51));
         botonPgCerrarSesion.setFont(new java.awt.Font("Roboto Black", 0, 11)); // NOI18N
@@ -213,6 +200,19 @@ public class Pagina_Multiple extends javax.swing.JFrame {
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 780, 560));
 
+        pgBotonPerfil.setBackground(new java.awt.Color(51, 51, 51));
+        pgBotonPerfil.setFont(new java.awt.Font("Roboto Black", 0, 11)); // NOI18N
+        pgBotonPerfil.setText("Perfil");
+        pgBotonPerfil.setBorderPainted(false);
+        pgBotonPerfil.setContentAreaFilled(false);
+        pgBotonPerfil.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        pgBotonPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pgBotonPerfilActionPerformed(evt);
+            }
+        });
+        jPanel4.add(pgBotonPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 150, -1));
+
         background.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 560));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -282,12 +282,18 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonEnviarTwitActionPerformed
 
+    private void pgBotonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pgBotonPerfilActionPerformed
+        PgPerfil_Usuario perfilUsuario = new PgPerfil_Usuario(pgInicial);
+        
+        perfilUsuario.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_pgBotonPerfilActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TituloTxt;
     private javax.swing.JPanel background;
     private javax.swing.JButton botonEnviarTwit;
     private javax.swing.JButton botonPgCerrarSesion;
-    private javax.swing.JButton botonPgEditar_Perfil;
     private javax.swing.JPanel cajaPaneles;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
@@ -305,6 +311,7 @@ public class Pagina_Multiple extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton pgBotonPerfil;
     private javax.swing.JTextArea twitsTimeline;
     private javax.swing.JTextField zonaEscribir;
     // End of variables declaration//GEN-END:variables
