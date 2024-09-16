@@ -3,15 +3,47 @@ package william_martinez_proyecto2_q3;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
 
 public class Pagina_Multiple extends javax.swing.JFrame {
+    private static final int MAX_CHAR_PER_LINE = 40;
     Pagina_Inicial pgInicial;
+    
     
     public Pagina_Multiple(Pagina_Inicial pgInicial) {
         initComponents();
         this.pgInicial = pgInicial;
         this.setLocation(0, 0);
         
+        zonaEscribir.addKeyListener(new KeyListener() {
+            public void keyTyped(KeyEvent e) {
+                // No hacemos nada aquí
+            }
+
+            public void keyPressed(KeyEvent e) {
+                // No hacemos nada aquí
+            }
+
+            public void keyReleased(KeyEvent e) {
+                String[] lines = zonaEscribir.getText().split("\n");
+                StringBuilder limitedText = new StringBuilder();
+
+                for (String line : lines) {
+                    // Divide la línea en partes del tamaño máximo permitido
+                    while (line.length() > MAX_CHAR_PER_LINE) {
+                        limitedText.append(line.substring(0, MAX_CHAR_PER_LINE)).append("\n");
+                        line = line.substring(MAX_CHAR_PER_LINE);
+                    }
+                    limitedText.append(line).append("\n"); // Agrega la línea restante
+                }
+
+                // Establece el texto limitado de nuevo en el JTextArea
+                zonaEscribir.setText(limitedText.toString().trim());
+                zonaEscribir.setCaretPosition(zonaEscribir.getText().length()); // Mantiene el cursor al final
+            }
+        });
+    
 //        System.out.println("Estado de loggedUser antes de obtener el usuario: " + pgInicial.loggedUser);
 //        User_info user = pgInicial.loggedUser.getLoggedUser();
 //        System.out.println("Usuario en loggedUser: " + pgInicial.loggedUser.getLoggedUser());
@@ -58,9 +90,10 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jTextField2 = new javax.swing.JTextField();
+        buscarMenciones = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        zonaEscribir = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        zonaEscribir = new javax.swing.JTextArea();
         pgBotonPerfil = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
@@ -135,35 +168,55 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Buscar Hashtags:");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane3.setViewportView(jTextArea2);
+
+        buscarMenciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarMencionesActionPerformed(evt);
+            }
+        });
+
+        zonaEscribir.setColumns(20);
+        zonaEscribir.setRows(5);
+        jScrollPane4.setViewportView(zonaEscribir);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonEnviarTwit))
-                    .addComponent(zonaEscribir))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(202, 202, 202)
+                                .addComponent(botonEnviarTwit)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
                     .addComponent(jScrollPane3)
-                    .addComponent(jTextField2)
+                    .addComponent(buscarMenciones)
                     .addComponent(jTextField3))
                 .addGap(23, 23, 23))
         );
@@ -174,19 +227,9 @@ public class Pagina_Multiple extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(zonaEscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(botonEnviarTwit))
-                        .addGap(14, 14, 14)
-                        .addComponent(jScrollPane1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buscarMenciones, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
@@ -194,8 +237,19 @@ public class Pagina_Multiple extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(botonEnviarTwit))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))))
         );
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 780, 560));
@@ -289,11 +343,20 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_pgBotonPerfilActionPerformed
 
+    private void buscarMencionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMencionesActionPerformed
+        String username= buscarMenciones.getText();
+        
+        pgInicial.manejoUser.buscarMenciones(username);
+        
+        
+    }//GEN-LAST:event_buscarMencionesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TituloTxt;
     private javax.swing.JPanel background;
     private javax.swing.JButton botonEnviarTwit;
     private javax.swing.JButton botonPgCerrarSesion;
+    private javax.swing.JTextField buscarMenciones;
     private javax.swing.JPanel cajaPaneles;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
@@ -307,13 +370,13 @@ public class Pagina_Multiple extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JButton pgBotonPerfil;
     private javax.swing.JTextArea twitsTimeline;
-    private javax.swing.JTextField zonaEscribir;
+    private javax.swing.JTextArea zonaEscribir;
     // End of variables declaration//GEN-END:variables
 
     void mostrarPantalla(String paginaInicial) {
