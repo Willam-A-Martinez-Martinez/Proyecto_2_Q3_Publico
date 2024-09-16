@@ -43,7 +43,7 @@ public class pgPerfil_Usuario extends javax.swing.JFrame {
       private void updateCounts() {
         followerscount.setText(String.valueOf(followers.getFollowersCount()));
         followingcount.setText(String.valueOf(following.getFollowingCount()));
-        tweetcount.setText("");
+        tweetcount.setText(String.valueOf(tweetModel.size()));
     }
 
     /**
