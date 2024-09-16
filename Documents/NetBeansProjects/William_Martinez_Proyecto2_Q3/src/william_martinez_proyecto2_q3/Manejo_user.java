@@ -138,13 +138,12 @@ public class Manejo_user {
         return null;
     }
     
-     // Verificacion de si el username es Unico.
     public boolean crearUsuario(String username, String nombreUser, String password, char generoUser, int edadUser){
-if (buscar(username) != null) {
-        System.out.println("El usuario ya está registrado: " + username);
-        return false; // Usuario ya registrado
+        if (buscar(username) != null) {
+            System.out.println("El usuario ya está registrado: " + username);
+            return false;
     }
-
+        
 
     // Intentar agregar el nuevo usuario en la primera posición vacía
     for (int i = 0; i < userInfo.length; i++) {
@@ -155,7 +154,8 @@ if (buscar(username) != null) {
         }
     }
         return false;
- }
+    }
+    
         // Buscar usuario por username
     public User_info buscarUsuario(String username){
         for (int i = 0; i < totalUsers; i++) {
