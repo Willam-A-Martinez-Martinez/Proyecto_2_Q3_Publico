@@ -276,6 +276,8 @@ public class Pagina_Registro extends javax.swing.JFrame {
             
             pgInicial.saveLoggedUser(user);
             
+            System.out.println("Usuario:"+pgInicial.loggedUser.getLoggedUser().getNombreUser());
+            
             pgInicial.manejoUser.mostrarUsuarios();
             pgMultiple.setVisible(true);
             this.setVisible(false);

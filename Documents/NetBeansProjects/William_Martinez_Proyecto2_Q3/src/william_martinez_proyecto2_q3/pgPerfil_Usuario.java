@@ -30,12 +30,20 @@ public class pgPerfil_Usuario extends javax.swing.JFrame {
         
        
         updateCounts();  // Actualizar contadores iniciales
+        
+        String generoStr = Character.toString(pgInicial.loggedUser.getLoggedUser().getGeneroUser());
+        nombre.setText(pgInicial.loggedUser.getLoggedUser().getNombreUser());
+        username.setText(pgInicial.loggedUser.getLoggedUser().getUsername());
+        edad.setText(Integer.toString(pgInicial.loggedUser.getLoggedUser().getEdadUser()));
+        genero.setText(generoStr);
+        fechaIngreso.setText(pgInicial.loggedUser.getLoggedUser().getFechaHoraFormateada());
+        tweetfield.setText(pgInicial.manejoUser.mostrarTwits(pgInicial.loggedUser.getLoggedUser().getUsername()));
     }
     
       private void updateCounts() {
         followerscount.setText(String.valueOf(followers.getFollowersCount()));
         followingcount.setText(String.valueOf(following.getFollowingCount()));
-        tweetcount.setText(String.valueOf(tweetModel.size()));
+        tweetcount.setText("");
     }
 
     /**
@@ -51,9 +59,9 @@ public class pgPerfil_Usuario extends javax.swing.JFrame {
         Backhomebtt = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        name = new javax.swing.JLabel();
-        Username = new javax.swing.JLabel();
-        Age = new javax.swing.JLabel();
+        nameTxt = new javax.swing.JLabel();
+        usernameTxt = new javax.swing.JLabel();
+        ageTxt = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -61,8 +69,16 @@ public class pgPerfil_Usuario extends javax.swing.JFrame {
         followingcount = new java.awt.TextField();
         followerscount = new java.awt.TextField();
         tweetcount = new java.awt.TextField();
-        tweetfield = new javax.swing.JTextField();
         Followbutton = new javax.swing.JButton();
+        generoTxt = new javax.swing.JLabel();
+        fechaIngresoTxt = new javax.swing.JLabel();
+        fechaIngreso = new java.awt.TextField();
+        nombre = new java.awt.TextField();
+        username = new java.awt.TextField();
+        edad = new java.awt.TextField();
+        genero = new java.awt.TextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tweetfield = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,23 +98,23 @@ public class pgPerfil_Usuario extends javax.swing.JFrame {
         BackHome.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
         BackHome.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
 
-        name.setText("Nombre:");
-        BackHome.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        nameTxt.setText("Nombre:");
+        BackHome.add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
-        Username.setText("UserN:");
-        BackHome.add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+        usernameTxt.setText("UserN:");
+        BackHome.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
-        Age.setText("Edad:");
-        BackHome.add(Age, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        ageTxt.setText("Edad:");
+        BackHome.add(ageTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         jLabel6.setText("Tweet's");
-        BackHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 70, -1, -1));
+        BackHome.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, -1));
 
         jLabel7.setText("Seguidores:");
-        BackHome.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 70, -1, -1));
+        BackHome.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, -1));
 
         jLabel8.setText("Siguiendo:");
-        BackHome.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 70, -1, -1));
+        BackHome.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
         editbotton.setBackground(new java.awt.Color(204, 204, 204));
         editbotton.setText("Editar");
@@ -117,7 +133,7 @@ public class pgPerfil_Usuario extends javax.swing.JFrame {
                 followingcountActionPerformed(evt);
             }
         });
-        BackHome.add(followingcount, new org.netbeans.lib.awtextra.AbsoluteConstraints(526, 70, 20, -1));
+        BackHome.add(followingcount, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 20, -1));
 
         followerscount.setBackground(new java.awt.Color(204, 204, 255));
         followerscount.setName(""); // NOI18N
@@ -127,7 +143,7 @@ public class pgPerfil_Usuario extends javax.swing.JFrame {
                 followerscountActionPerformed(evt);
             }
         });
-        BackHome.add(followerscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(426, 70, 20, -1));
+        BackHome.add(followerscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 20, -1));
 
         tweetcount.setBackground(new java.awt.Color(204, 204, 255));
         tweetcount.setName(""); // NOI18N
@@ -137,15 +153,7 @@ public class pgPerfil_Usuario extends javax.swing.JFrame {
                 tweetcountActionPerformed(evt);
             }
         });
-        BackHome.add(tweetcount, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 70, 20, -1));
-
-        tweetfield.setBackground(new java.awt.Color(217, 204, 252));
-        tweetfield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tweetfieldActionPerformed(evt);
-            }
-        });
-        BackHome.add(tweetfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 174, 530, 280));
+        BackHome.add(tweetcount, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 20, -1));
 
         Followbutton.setText("Seguir");
         Followbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -155,25 +163,81 @@ public class pgPerfil_Usuario extends javax.swing.JFrame {
         });
         BackHome.add(Followbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 100, 20));
 
+        generoTxt.setText("Genero: ");
+        BackHome.add(generoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+
+        fechaIngresoTxt.setText("Fecha de ingreso: ");
+        BackHome.add(fechaIngresoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+
+        fechaIngreso.setBackground(new java.awt.Color(204, 204, 255));
+        fechaIngreso.setName(""); // NOI18N
+        fechaIngreso.setText("textField1");
+        fechaIngreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaIngresoActionPerformed(evt);
+            }
+        });
+        BackHome.add(fechaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 90, 20));
+
+        nombre.setBackground(new java.awt.Color(204, 204, 255));
+        nombre.setName(""); // NOI18N
+        nombre.setText("textField1");
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
+        BackHome.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 90, 20));
+
+        username.setBackground(new java.awt.Color(204, 204, 255));
+        username.setName(""); // NOI18N
+        username.setText("textField1");
+        username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameActionPerformed(evt);
+            }
+        });
+        BackHome.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 90, 20));
+
+        edad.setBackground(new java.awt.Color(204, 204, 255));
+        edad.setName(""); // NOI18N
+        edad.setText("textField1");
+        edad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edadActionPerformed(evt);
+            }
+        });
+        BackHome.add(edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 90, 20));
+
+        genero.setBackground(new java.awt.Color(204, 204, 255));
+        genero.setName(""); // NOI18N
+        genero.setText("textField1");
+        genero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generoActionPerformed(evt);
+            }
+        });
+        BackHome.add(genero, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 90, 20));
+
+        tweetfield.setColumns(20);
+        tweetfield.setRows(5);
+        jScrollPane4.setViewportView(tweetfield);
+
+        BackHome.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 570, 290));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(BackHome, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(BackHome, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(BackHome, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(BackHome, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -188,23 +252,23 @@ public class pgPerfil_Usuario extends javax.swing.JFrame {
 
     private void editbottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbottonActionPerformed
         // TODO add your handling code here:
-        String nuevoNombre = JOptionPane.showInputDialog(this, "Ingrese su nuevo nombre:", name.getText());
-        String nuevoUsername = JOptionPane.showInputDialog(this, "Ingrese su nuevo nombre de usuario:", Username.getText());
-        String nuevaEdad = JOptionPane.showInputDialog(this, "Ingrese su nueva edad:", Age.getText());
+        String nuevoNombre = JOptionPane.showInputDialog(this, "Ingrese su nuevo nombre:", nameTxt.getText());
+        String nuevoUsername = JOptionPane.showInputDialog(this, "Ingrese su nuevo nombre de usuario:", usernameTxt.getText());
+        String nuevaEdad = JOptionPane.showInputDialog(this, "Ingrese su nueva edad:", ageTxt.getText());
 
         // Validar que los campos no estén vacíos
         if (nuevoNombre != null && !nuevoNombre.trim().isEmpty()) {
-            name.setText(nuevoNombre);
+            nameTxt.setText(nuevoNombre);
         }
 
         if (nuevoUsername != null && !nuevoUsername.trim().isEmpty()) {
-            Username.setText(nuevoUsername);
+            usernameTxt.setText(nuevoUsername);
         }
 
         if (nuevaEdad != null && !nuevaEdad.trim().isEmpty()) {
             try {
                 int edad = Integer.parseInt(nuevaEdad);
-                Age.setText(String.valueOf(edad));
+                ageTxt.setText(String.valueOf(edad));
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "Edad no válida, por favor ingrese un número.");
             }
@@ -232,13 +296,6 @@ public class pgPerfil_Usuario extends javax.swing.JFrame {
         tweetcount.setText(String.valueOf(tweetModel.size()));
     }//GEN-LAST:event_tweetcountActionPerformed
 
-    private void tweetfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tweetfieldActionPerformed
-        // TODO add your handling code here:
-        String tweet = tweetfield.getText();  // Obtener el texto del tweet
-        tweetModel.addElement(tweet);  // Añadir el tweet al modelo
-        updateCounts();  // Actualizar los contadores de tweets
-    }//GEN-LAST:event_tweetfieldActionPerformed
-
     private void FollowbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FollowbuttonActionPerformed
         // TODO add your handling code here:
         // Obtén el nombre de usuario a seguir
@@ -259,26 +316,54 @@ public class pgPerfil_Usuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_FollowbuttonActionPerformed
 
+    private void fechaIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaIngresoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fechaIngresoActionPerformed
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreActionPerformed
+
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameActionPerformed
+
+    private void edadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edadActionPerformed
+
+    private void generoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_generoActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Age;
     private javax.swing.JPanel BackHome;
     private javax.swing.JButton Backhomebtt;
     private javax.swing.JButton Followbutton;
-    private javax.swing.JLabel Username;
+    private javax.swing.JLabel ageTxt;
+    private java.awt.TextField edad;
     private javax.swing.JButton editbotton;
+    private java.awt.TextField fechaIngreso;
+    private javax.swing.JLabel fechaIngresoTxt;
     private java.awt.TextField followerscount;
     private java.awt.TextField followingcount;
+    private java.awt.TextField genero;
+    private javax.swing.JLabel generoTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel name;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel nameTxt;
+    private java.awt.TextField nombre;
     private java.awt.TextField tweetcount;
-    private javax.swing.JTextField tweetfield;
+    private javax.swing.JTextArea tweetfield;
+    private java.awt.TextField username;
+    private javax.swing.JLabel usernameTxt;
     // End of variables declaration//GEN-END:variables
 }

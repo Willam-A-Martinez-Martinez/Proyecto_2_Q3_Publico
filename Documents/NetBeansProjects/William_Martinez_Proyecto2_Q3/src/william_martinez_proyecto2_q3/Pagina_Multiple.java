@@ -12,29 +12,10 @@ public class Pagina_Multiple extends javax.swing.JFrame {
         initComponents();
         this.pgInicial = pgInicial;
         this.setLocation(0, 0);
-        
+        twitsTimeline.setText(pgInicial.twits_Generales.imprimirTwits());
         
     
-//        System.out.println("Estado de loggedUser antes de obtener el usuario: " + pgInicial.loggedUser);
-//        User_info user = pgInicial.loggedUser.getLoggedUser();
-//        System.out.println("Usuario en loggedUser: " + pgInicial.loggedUser.getLoggedUser());
-//        
-//        System.out.println("Estado de usuario en mostrarTimeline: " + user);
-//        
-//        if (pgInicial.loggedUser != null) {
-//        
-//            if (user != null) {
-//        // Llama a mostrarTimeline solo si el usuario no es null
-//        twitsTimeline.setText(pgInicial.twits_Timeline.mostrarTimeline(user));
-//            } else {
-//                System.out.println("Error: El usuario no está inicializado.");
-//        }
-//        } else {
-//            System.out.println("Error: loggedUser no está inicializado.");
-//        }
-//        
-//        String timelineTexto = pgInicial.twits_Timeline.mostrarTimeline(user);
-//        twitsTimeline.setText(timelineTexto);
+
     }
 
     @SuppressWarnings("unchecked")

@@ -16,9 +16,6 @@ public class Manejo_user {
         hashtagTrends = new HashMap<>(); // Inicializar el mapa de tendencias de hashtags.
     
     }
-     
-    
-    
     
     public boolean agregarTwit(String username, String twit) {
         User_info usuario = buscar(username);

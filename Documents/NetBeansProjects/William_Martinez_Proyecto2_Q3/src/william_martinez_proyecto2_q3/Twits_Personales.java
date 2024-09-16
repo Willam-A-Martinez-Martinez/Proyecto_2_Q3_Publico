@@ -10,6 +10,10 @@ public class Twits_Personales {
         contadorTwits = 0;
     }
 
+    public int getContadorTwits() {
+        return contadorTwits;
+    }
+
     public Twits buscarTwit(String twitMensaje) {
         for (Twits twit : twits) {
             if (twit != null && twit.getMensaje().equals(twitMensaje)) {

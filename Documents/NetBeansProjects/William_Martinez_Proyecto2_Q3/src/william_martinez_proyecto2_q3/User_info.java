@@ -51,7 +51,7 @@ public class User_info {
     
     
     public String getFechaHoraFormateada() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return this.fechaActual.format(formatter);
     }
     
